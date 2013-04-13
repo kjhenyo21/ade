@@ -11,11 +11,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'nocache_hash' => '1074051672d13d7ae52-78119827',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5169002b91491',
+  'unifunc' => 'content_51695b6678744',
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5169002b91491')) {function content_5169002b91491($_smarty_tpl) {?>  <!--
+<?php if ($_valid && !is_callable('content_51695b6678744')) {function content_51695b6678744($_smarty_tpl) {?>  <!--
  * Trailblazer Digital Accounting Audit Trail Program
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created October 31, 2012
@@ -112,7 +112,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div style="font-style: italic; font-size: 8pt; color: red; margin-bottom: 20px">* - required fields</div>
 					<div class="field-group" style="margin-bottom: 0px; text-align: center">
 						<div class="control">
-							<input type="hidden" id="type" name="type" value="sales" />
+							<input type="hidden" id="type" name="type" value="expenses" />
 							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="http://localhost/ade/" id="reset" class="btn">Back</a>
@@ -209,7 +209,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						data: $("#add-trans").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							location.replace("http://localhost/ade/add/enter_trans?type=sales&month=January&year=2010");
+							location.replace("http://localhost/ade/add/enter_trans?type=expenses&month=January&year=2010");
 						}
 					});
 				} else {

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 06:34:02
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 11:26:47
          compiled from "C:\xampp\htdocs\ade\application/views\home.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:254465166b8cb981281-33709611%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7d6a3ef0e3d5e64deba122ee522cf85ff2f0cc2c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\home.tpl',
-      1 => 1365827509,
+      1 => 1365845202,
       2 => 'file',
     ),
   ),
@@ -242,8 +242,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div id="dload-modal-body" class="modal-body">
 			</div>
 			<div class="modal-footer">
-				<a type="button" class="btn btn-primary" id="locateFileButton">Yes</a>
-				<a type="button" class="btn" data-dismiss="modal" aria-hidden="true" onClick="closeDloadModal(); return false;">No</a>
+				<a type="button" class="btn btn-primary" id="locateFileButton">Yes</a>				
+				<a href="<?php echo smarty_function_url(array(),$_smarty_tpl);?>
+" type="button" class="btn">No</a>
+				<!--<a type="button" class="btn" data-dismiss="modal" aria-hidden="true" onClick="closeDloadModal(); return false;">No</a>-->
 			</div>
 		</div>
 		<!-- Modal for Clearing the Archive -->

@@ -149,6 +149,8 @@ class Export extends CI_Controller {
 					$data .= "a,".$e['acct_name'].",".$e['acct_no'].",,".PHP_EOL;
 					$data .= $e['date'].",".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
 					$curr_acct = $e['acct_name'];
+				} else if($e['ref'] == 'Total') {
+					$data .= "t,".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
 				} else $data .= $e['date'].",".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
 			}
 			if ($filename == '')
@@ -194,7 +196,9 @@ class Export extends CI_Controller {
 						$e['account'] = '"'.$e['account'].'"';
 					if (strstr($e['ref'], ','))
 						$e['ref'] = '"'.$e['ref'].'"';
-					$data .= $e['date'].",".$e['account'].",".$e['sdRef'].",".$e['ref'].",".$e['main_debit'].",".$e['other'].",".$e['main_credit'].PHP_EOL;
+					if ($e['ref'] == 'Total')
+						$data .= "t,".$e['account'].",".$e['sdRef'].",".$e['ref'].",".$e['main_debit'].",".$e['other'].",".$e['main_credit'].PHP_EOL;
+					else $data .= $e['date'].",".$e['account'].",".$e['sdRef'].",".$e['ref'].",".$e['main_debit'].",".$e['other'].",".$e['main_credit'].PHP_EOL;
 				}
 				
 				if ($filename == '') {
@@ -235,8 +239,6 @@ class Export extends CI_Controller {
 		$month = $_GET['month'];
 		$year = $_GET['year'];
 		$filename = $_GET['filename'];
-		$temp = explode("-", $filename);
-		$det_filename = $temp[0]."d-".$temp[1]."-".$temp[2];
 		$data_trans = "h,Date,OR No,Amount Due,Name,Address,Contact".PHP_EOL;
 		$data_trans_det = "h,Date,OR No,Item,Quantity,Unit Price,Amount".PHP_EOL;
 		$monthnames = array('none','January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
@@ -259,8 +261,17 @@ class Export extends CI_Controller {
 					$e['item'] = '"'.$e['item'].'"';
 				$data_trans_det .= ",".$e['date'].",".$e['or_no'].",".$e['item'].",".$e['qty'].",".$e['uprice'].",".$e['amt'].PHP_EOL;
 			}
-			//$filename = "is-".$num_month."-".$year.".is";
-		} 		
+		} 
+		
+		if ($filename == '') {
+			if ($type == 'sales')
+				$filename = "st-".$num_month."-".$year.".tf";
+			else if ($type == 'purchases')
+				$filename = "pt-".$num_month."-".$year.".tf";
+			else if ($type == 'expenses')
+				$filename = "et-".$num_month."-".$year.".tf";
+		}
+				
 		//echo $filename;
 		//echo $data;
 		$folder = 'temp';
@@ -282,6 +293,9 @@ class Export extends CI_Controller {
 		fwrite($handle, $data_trans);
 		
 		//trans det
+		$temp = explode("-", $filename);
+		$det_filename = $temp[0]."d-".$temp[1]."-".$temp[2];
+		
 		$new_file = $folder."/".$det_filename;
 		$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
 		fwrite($handle, $data_trans_det);

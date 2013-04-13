@@ -85,7 +85,7 @@ class Index extends CI_Controller {
 			header("location: ".$this->config->item('base_url')."export/export_ledger?type=general&month=".$month."&year=".$year."&filename=".$filename);
 		else if ($type == 'Cash Receipts Journal')
 			header("location: ".$this->config->item('base_url')."export/export_journal?type=cashReceipts&month=".$month."&year=".$year."&filename=".$filename);
-		else if ($type == 'Cash Disbursments Journal')
+		else if ($type == 'Cash Disbursements Journal')
 			header("location: ".$this->config->item('base_url')."export/export_journal?type=cashDisbursements&month=".$month."&year=".$year."&filename=".$filename);
 		else if ($type == 'Sales Transaction File')
 			header("location: ".$this->config->item('base_url')."export/export_trans?type=sales&month=".$month."&year=".$year."&filename=".$filename);

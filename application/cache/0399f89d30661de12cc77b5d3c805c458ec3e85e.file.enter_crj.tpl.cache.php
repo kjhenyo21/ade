@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 06:46:46
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 11:36:44
          compiled from "C:\xampp\htdocs\ade\application/views\add\enter_crj.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:8046516715104d01c1-41214900%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0399f89d30661de12cc77b5d3c805c458ec3e85e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_crj.tpl',
-      1 => 1365828391,
+      1 => 1365831337,
       2 => 'file',
     ),
   ),
@@ -68,13 +68,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<td style="width: 140px"></td>
 									<td style="width: 140px; text-align: right"><strong>TOTAL</strong></td>
 									<td>
-										<input type="text" class="span2" id="total_debit" name="total_cash"  style="width: 80px" placeholder="Php 0.00"/>
+										<input type="text" class="span2" id="total_cash" name="total_cash"  style="width: 80px" placeholder="Php 0.00"/>
 									</td>
 									<td>
-										<input type="text" class="span2" id="total_debit" name="total_other"  style="width: 80px" placeholder="Php 0.00"/>
+										<input type="text" class="span2" id="total_other" name="total_other"  style="width: 80px" placeholder="Php 0.00"/>
 									</td>
 									<td>
-										<input type="text" class="span2" id="total_credit" name="total_sales"  style="width: 80px" placeholder="Php 0.00"/>
+										<input type="text" class="span2" id="total_sales" name="total_sales"  style="width: 80px" placeholder="Php 0.00"/>
 									</td>
 									<input type="hidden" class="span2" id="total_label" name="total_label" value="Total"/>
 									<td style="width: 20px"></td>
@@ -206,7 +206,7 @@ assets/scripts/jquery.validate.min.js" type="text/javascript"></script>
 						data: $("#add-journal").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							//location.replace("<?php echo smarty_function_url(array(),$_smarty_tpl);?>
+							location.replace("<?php echo smarty_function_url(array(),$_smarty_tpl);?>
 ");
 						}
 					});

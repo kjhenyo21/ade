@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 07:31:09
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 14:24:13
          compiled from "C:\xampp\htdocs\ade\application/views\edit\enter_crj.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1649951678701207021-22027054%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '35b583be78ddef71ca5f4d95cbbdbc2d19183f49' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_crj.tpl',
-      1 => 1365831037,
+      1 => 1365832384,
       2 => 'file',
     ),
   ),
@@ -119,15 +119,15 @@ $_smarty_tpl->tpl_vars['e']->_loop = true;
 												<td style="width: 140px"></td>
 												<td style="width: 140px; text-align: right"><strong>TOTAL</strong></td>
 												<td>
-													<input type="text" class="span2" id="total_debit" name="total_cash"  style="width: 80px" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['main_debit'];?>
+													<input type="text" class="span2" id="total_cash" name="total_cash"  style="width: 80px" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['main_debit'];?>
 " placeholder="Php 0.00"/>
 												</td>
 												<td>
-													<input type="text" class="span2" id="total_debit" name="total_other" style="width: 80px" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['other'];?>
+													<input type="text" class="span2" id="total_other" name="total_other" style="width: 80px" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['other'];?>
 " placeholder="Php 0.00"/>
 												</td>
 												<td>
-													<input type="text" class="span2" id="total_credit" name="total_sales"  style="width: 80px" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['main_credit'];?>
+													<input type="text" class="span2" id="total_sales" name="total_sales"  style="width: 80px" value="<?php echo $_smarty_tpl->tpl_vars['e']->value['main_credit'];?>
 " placeholder="Php 0.00"/>
 												</td>
 												<input type="hidden" class="span2" id="total_label" name="total_label" value="Total"/>

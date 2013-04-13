@@ -238,6 +238,7 @@ class Database_DB extends CI_Model {
 		if ($this->db->count_all_results() == 0) {	
 			$this->db->insert('journal', $data);
 		} else {
+			$this->db->where('type', $i['type']);
 			$this->db->where('source_doc_ref', $i['source_doc_ref']);
 			$this->db->where('account_name', $i['account_name']);
 			$this->db->where('reference_file', $i['reference_file']);

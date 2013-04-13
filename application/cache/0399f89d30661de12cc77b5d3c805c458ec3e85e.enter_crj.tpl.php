@@ -5,22 +5,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0399f89d30661de12cc77b5d3c805c458ec3e85e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_crj.tpl',
-      1 => 1365828391,
+      1 => 1365831337,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '8046516715104d01c1-41214900',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5168e3363640d',
-  'variables' => 
-  array (
-    'month' => 0,
-    'year' => 0,
-  ),
+  'unifunc' => 'content_51696557b8446',
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5168e3363640d')) {function content_5168e3363640d($_smarty_tpl) {?><!--
+<?php if ($_valid && !is_callable('content_51696557b8446')) {function content_51696557b8446($_smarty_tpl) {?>  <!--
  * Trailblazer Digital Accounting Audit Trail Program
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created October 31, 2012
@@ -63,13 +58,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 									<td style="width: 140px"></td>
 									<td style="width: 140px; text-align: right"><strong>TOTAL</strong></td>
 									<td>
-										<input type="text" class="span2" id="total_debit" name="total_cash"  style="width: 80px" placeholder="Php 0.00"/>
+										<input type="text" class="span2" id="total_cash" name="total_cash"  style="width: 80px" placeholder="Php 0.00"/>
 									</td>
 									<td>
-										<input type="text" class="span2" id="total_debit" name="total_other"  style="width: 80px" placeholder="Php 0.00"/>
+										<input type="text" class="span2" id="total_other" name="total_other"  style="width: 80px" placeholder="Php 0.00"/>
 									</td>
 									<td>
-										<input type="text" class="span2" id="total_credit" name="total_sales"  style="width: 80px" placeholder="Php 0.00"/>
+										<input type="text" class="span2" id="total_sales" name="total_sales"  style="width: 80px" placeholder="Php 0.00"/>
 									</td>
 									<input type="hidden" class="span2" id="total_label" name="total_label" value="Total"/>
 									<td style="width: 20px"></td>
@@ -187,7 +182,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						data: $("#add-journal").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							//location.replace("http://localhost/ade/");
+							location.replace("http://localhost/ade/");
 						}
 					});
 				} else {

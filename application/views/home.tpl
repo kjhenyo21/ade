@@ -220,8 +220,9 @@
 			<div id="dload-modal-body" class="modal-body">
 			</div>
 			<div class="modal-footer">
-				<a type="button" class="btn btn-primary" id="locateFileButton">Yes</a>
-				<a type="button" class="btn" data-dismiss="modal" aria-hidden="true" onClick="closeDloadModal(); return false;">No</a>
+				<a type="button" class="btn btn-primary" id="locateFileButton">Yes</a>				
+				<a href="{url}" type="button" class="btn">No</a>
+				<!--<a type="button" class="btn" data-dismiss="modal" aria-hidden="true" onClick="closeDloadModal(); return false;">No</a>-->
 			</div>
 		</div>
 		<!-- Modal for Clearing the Archive -->

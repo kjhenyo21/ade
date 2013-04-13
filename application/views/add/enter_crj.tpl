@@ -24,7 +24,7 @@
 								<th style="text-align: center; width: 140px">Source Document Reference #<span class="asterisk">*</span></th>
 								<th style="text-align: center">Reference File<span class="asterisk">*</span></th>
 								<th style="text-align: center">Cash (Db)<span class="asterisk">*</span></th>
-								<th style="text-align: center">Other (Db)<span class="asterisk">*</span></th>
+								<th style="text-align: center">Other (Cr)<span class="asterisk">*</span></th>
 								<th style="text-align: center">Sales (Cr)<span class="asterisk">*</span></th>
 								<th></th>
 							</thead>

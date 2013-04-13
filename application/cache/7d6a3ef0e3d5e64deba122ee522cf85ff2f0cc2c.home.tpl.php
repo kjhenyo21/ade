@@ -5,17 +5,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7d6a3ef0e3d5e64deba122ee522cf85ff2f0cc2c' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\home.tpl',
-      1 => 1365827509,
+      1 => 1365845202,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '254465166b8cb981281-33709611',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5169153b0d657',
+  'unifunc' => 'content_5169682f684a2',
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5169153b0d657')) {function content_5169153b0d657($_smarty_tpl) {?>  <!--
+<?php if ($_valid && !is_callable('content_5169682f684a2')) {function content_5169682f684a2($_smarty_tpl) {?>  <!--
  * Accounting Data Encoder
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created April 11, 2013
@@ -237,8 +237,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			<div id="dload-modal-body" class="modal-body">
 			</div>
 			<div class="modal-footer">
-				<a type="button" class="btn btn-primary" id="locateFileButton">Yes</a>
-				<a type="button" class="btn" data-dismiss="modal" aria-hidden="true" onClick="closeDloadModal(); return false;">No</a>
+				<a type="button" class="btn btn-primary" id="locateFileButton">Yes</a>				
+				<a href="http://localhost/ade/" type="button" class="btn">No</a>
+				<!--<a type="button" class="btn" data-dismiss="modal" aria-hidden="true" onClick="closeDloadModal(); return false;">No</a>-->
 			</div>
 		</div>
 		<!-- Modal for Clearing the Archive -->

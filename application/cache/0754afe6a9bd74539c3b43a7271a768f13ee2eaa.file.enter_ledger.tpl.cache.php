@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 09:48:38
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 13:23:32
          compiled from "C:\xampp\htdocs\ade\application/views\edit\enter_ledger.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2390451679fb0a5e971-15450790%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0754afe6a9bd74539c3b43a7271a768f13ee2eaa' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_ledger.tpl',
-      1 => 1365839234,
+      1 => 1365840000,
       2 => 'file',
     ),
   ),
@@ -244,8 +244,8 @@ assets/scripts/jquery.validate.min.js" type="text/javascript"></script>
 				$('#row' + no).remove();
 				rows--;
 				$.ajax({
-						type: "GET",
-						url: 'deleteLedgerEntry?sdRef=' + sdRef,
+					type: "GET",
+					url: 'deleteLedgerEntry?sdRef=' + sdRef,
 				});				
 			}
 			
