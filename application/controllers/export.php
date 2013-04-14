@@ -53,75 +53,91 @@ class Export extends CI_Controller {
 		
 		$revenues[] = "Revenue:,";
 		$expenses[] = "Less: Expenses:,";
+		$status = "";
+		
 		if ($month != '') {
 			$entries = $database->getMonthlyIS($month, $year);
-			foreach($entries as $e) {
-				if ($e['category'] == 'revenue')
-					$revenues[] = $e['account'].",".$e['amount'];
-				else if ($e['category'] == 'expense')
-					$expenses[] = $e['account'].",".$e['amount'];
-				else if ($e['category'] == 'total')
-					$total[] = $e['account'].",".$e['amount'];
-			}
 			
-			foreach ($revenues as $r) {
-				$data .= $r.PHP_EOL;
+			if($entries) {
+				foreach($entries as $e) {
+					if ($e['category'] == 'revenue')
+						$revenues[] = $e['account'].",".$e['amount'];
+					else if ($e['category'] == 'expense')
+						$expenses[] = $e['account'].",".$e['amount'];
+					else if ($e['category'] == 'total')
+						$total[] = $e['account'].",".$e['amount'];
+				}
+				
+				foreach ($revenues as $r) {
+					$data .= $r.PHP_EOL;
+				}
+				foreach ($expenses as $e) {
+					$data .= $e.PHP_EOL;
+				}
+				foreach ($total as $t) {
+					$data .= $t.PHP_EOL;
+				}
+				if ($filename == '')
+						$filename = "is-".$num_month."-".$year.".is";
+			} else {
+				$status = "fail";
+				echo $status;
 			}
-			foreach ($expenses as $e) {
-				$data .= $e.PHP_EOL;
-			}
-			foreach ($total as $t) {
-				$data .= $t.PHP_EOL;
-			}
-			if ($filename == '')
-					$filename = "is-".$num_month."-".$year.".is";
 		} else {
 			$entries = $database->getYearlyIS($year);
-			foreach($entries as $e) {
-				if (strstr($e['account'], ','))
-					$e['account'] = '"'.$e['account'].'"';
-					
-				if ($e['category'] == 'revenue')
-					$revenues[] = $e['account'].",".$e['amount'];
-				else if ($e['category'] == 'expense')
-					$expenses[] = $e['account'].",".$e['amount'];
-				else if ($e['category'] == 'total')
-					$total[] = $e['account'].",".$e['amount'];
-			}
 			
-			foreach ($revenues as $r) {
-				$data .= $r.PHP_EOL;
+			if($entries) {
+				foreach($entries as $e) {
+					if (strstr($e['account'], ','))
+						$e['account'] = '"'.$e['account'].'"';
+						
+					if ($e['category'] == 'revenue')
+						$revenues[] = $e['account'].",".$e['amount'];
+					else if ($e['category'] == 'expense')
+						$expenses[] = $e['account'].",".$e['amount'];
+					else if ($e['category'] == 'total')
+						$total[] = $e['account'].",".$e['amount'];
+				}
+				
+				foreach ($revenues as $r) {
+					$data .= $r.PHP_EOL;
+				}
+				foreach ($expenses as $e) {
+					$data .= $e.PHP_EOL;
+				}
+				foreach ($total as $t) {
+					$data .= $t.PHP_EOL;
+				}
+				if ($filename == '')
+						$filename = "is-".$year.".is";
+			} else {
+				$status = "fail";
+				echo $status;
 			}
-			foreach ($expenses as $e) {
-				$data .= $e.PHP_EOL;
-			}
-			foreach ($total as $t) {
-				$data .= $t.PHP_EOL;
-			}
-			if ($filename == '')
-					$filename = "is-".$year.".is";
 		}
 		
 		//echo $filename;
 		//echo $data;
-		$folder = 'temp';
-		if (!is_dir($folder)) {
-			mkdir($folder);
-		}
-		
-		$new_file = $folder."/".$filename;
-		$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
-		fwrite($handle, $data);
+		if ($status != 'fail') {
+			$folder = 'temp';
+			if (!is_dir($folder)) {
+				mkdir($folder);
+			}
+			
+			$new_file = $folder."/".$filename;
+			$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
+			fwrite($handle, $data);
 
-		$local_ade_path = "C:\\ADE";
-		if (!is_dir($local_ade_path)) {
-			mkdir($local_ade_path);
-		}
+			$local_ade_path = "C:\\ADE";
+			if (!is_dir($local_ade_path)) {
+				mkdir($local_ade_path);
+			}
 
-		$downloadFile = 'C:/ADE/'.$filename;
-		$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
-		fwrite($handle, $data);
-		echo $local_ade_path;
+			$downloadFile = 'C:/ADE/'.$filename;
+			$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
+			fwrite($handle, $data);
+			echo $local_ade_path;
+		}
 	}
 
 	public function export_ledger() {
@@ -137,7 +153,7 @@ class Export extends CI_Controller {
 		
 		if ($month != '') {
 			$entries = $database->getLedger($type, $month, $year);
-
+			
 			foreach ($entries as $e) {
 				//if not current account, it must be the heading
 				if ($curr_acct != $e['acct_name']) {

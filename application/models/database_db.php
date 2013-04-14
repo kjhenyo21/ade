@@ -121,6 +121,9 @@ class Database_DB extends CI_Model {
 		   'amount' => $i['amount']
 		);
 		
+		$this->db->where('month', $i['month']);
+		$this->db->where('year', $i['year']);
+		$this->db->where('category', $i['category']);
 		$this->db->where('account', $i['account']);
 		$this->db->from('income_statement');
 		if ($this->db->count_all_results() == 0) {		
@@ -253,7 +256,8 @@ class Database_DB extends CI_Model {
 		$query = $this->db->query("SELECT *
 									FROM journal
 									WHERE type = '$type'
-										AND date LIKE '".$year."-%".$num_month."-%'");
+										AND date LIKE '".$year."-%".$num_month."-%'
+										ORDER BY date ASC");
 		if ($query->result()) {
 			foreach ($query->result() as $row) {
 				$entries[] = array(
@@ -292,7 +296,8 @@ class Database_DB extends CI_Model {
 		$query = $this->db->query("SELECT *
 									FROM transactions
 									WHERE type = '$type'
-										AND date LIKE '".$year."-%".$num_month."-%'");
+										AND date LIKE '".$year."-%".$num_month."-%'
+										ORDER BY date ASC");
 		if ($query->result()) {
 			foreach ($query->result() as $row) {
 				$entries[] = array(
@@ -331,7 +336,8 @@ class Database_DB extends CI_Model {
 		$query = $this->db->query("SELECT *
 									FROM trans_details
 									WHERE type = '$type'
-										AND date LIKE '".$year."-%".$num_month."-%'");
+										AND date LIKE '".$year."-%".$num_month."-%'
+										ORDER BY date, or_no ASC");
 		if ($query->result()) {
 			foreach ($query->result() as $row) {
 				$entries[] = array(

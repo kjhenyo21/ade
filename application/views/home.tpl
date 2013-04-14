@@ -8,6 +8,19 @@
 	</head>
 	
 	<body>
+		<!-- Startup Modal -->
+		<div id="startup-modal" class="modal hide fade" style="margin-top: -150px; margin-left: -240px; width: 450px">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Tip!</h3>
+			</div>
+			<div id="startup-modal-body" class="modal-body">
+				Good day, dear user! We suggest that you start encoding data from source documents or transaction files up to financial statements for referencing purposes.
+			</div>
+			<div class="modal-footer">
+				<a type="button" class="btn btm-primary" data-dismiss="modal" aria-hidden="true">OK</a>
+			</div>
+		</div>
 		<!-- Modal for Add Entries -->
 		<div id="add-entries-modal" class="modal hide fade" style="margin-top: -100px; width: 480px">
 			<div class="modal-header">
@@ -15,14 +28,16 @@
 				<h3>File Type</h3>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="index/determineType" id="load-file-form" class="form-horizontal" style="margin-bottom: 0px">
+				<form method="post" action="index/determineType" id="add-entry-form" class="form-horizontal" style="margin-bottom: 0px">
 					<fieldset>
 						<div style="margin: 0 35px">
 							<div class="field-group" id="group-file">
 								Select the type of accounting file that you are going to enter data into and the accounting period as well..
 							</div>
-							<div class="field" id="file-type-field" style="text-align: center">
+							<br>
+							<div class="field" id="file-type-field" style="text-align: left">
 								<div class="control">
+									<span>File Type</span>
 									<select class="span3" id="add-file-type" name="add-file-type" onChange="monitor(); return false;">
 										<option></option>
 										<option>Income Statement</option>
@@ -63,7 +78,7 @@
 						</div>
 			</div>
 			<div class="modal-footer" style="text-align: center">
-				<input type="submit" id="proceed" class="btn" value="Proceed" disabled="disabled">
+				<a type="button" id="proceed" class="btn" disabled="disabled" onClick="validateAdd(); return false;">Proceed</a>
 				<input class="btn span1" data-dismiss="modal" value="Cancel" />
 			</div>
 					</fieldset>
@@ -77,7 +92,7 @@
 				<h3>File Type</h3>
 			</div>
 			<div class="modal-body">
-				<form method="post" action="index/determineEditType" id="load-file-form" class="form-horizontal" style="margin-bottom: 0px">
+				<form method="post" action="index/determineEditType" id="edit-entry-form" class="form-horizontal" style="margin-bottom: 0px">
 					<fieldset>
 						<div style="margin: 0 35px">
 							<div class="field-group" id="group-file">
@@ -129,7 +144,7 @@
 						</div>
 			</div>
 			<div class="modal-footer" style="text-align: center">
-				<input type="submit" id="go" class="btn btn-default" value="Go" disabled="disabled">
+				<a type="button" id="go" class="btn" disabled="disabled" onClick="validateEdit(); return false;">Go</a>
 				<input class="btn span1" data-dismiss="modal" value="Cancel" />
 			</div>
 					</fieldset>
@@ -168,7 +183,7 @@
 								</div>
 							</div>
 							<br>
-							<div class="field" id="date-field">
+							<div class="field" id="export-date-field">
 								<div class="control">
 									<span>Month</span>
 									<span>
@@ -200,12 +215,12 @@
 								</div>
 							</div>
 							<div style="font-style: italic; font-size: 8pt; color: red; margin-bottom: 10px">
-								Filename must be in the format required by Trailblazer Digital Audit Trail System. Please refer to the README for ADE file.
+								Filename must be in the format required by Trailblazer Digital Audit Trail System. If you leave it blank, the system will do the naming for you. Please refer to the README for ADE file.
 							</div>
 						</div>
 			</div>
 			<div class="modal-footer" style="text-align: center">
-				<a id="export" class="btn" onClick="exportIt(); return false;">Export</a>
+				<a id="export" class="btn" onClick="validateExp(); return false;">Export</a>
 				<button class="btn" data-dismiss="modal">Cancel</button>
 			</div>
 					</fieldset>
@@ -223,6 +238,18 @@
 				<a type="button" class="btn btn-primary" id="locateFileButton">Yes</a>				
 				<a href="{url}" type="button" class="btn">No</a>
 				<!--<a type="button" class="btn" data-dismiss="modal" aria-hidden="true" onClick="closeDloadModal(); return false;">No</a>-->
+			</div>
+		</div>
+		<!-- Modal for Failed Exporting File -->
+		<div id="dloadFailModal" class="modal hide fade" style="margin-top: -150px">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Fail!</h3>
+			</div>
+			<div id="dload-fail-modal-body" class="modal-body">
+			</div>
+			<div class="modal-footer">
+				<a type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</a>				
 			</div>
 		</div>
 		<!-- Modal for Clearing the Archive -->
@@ -245,6 +272,13 @@
 			<br>Switchboard 
 		</h3>
 		<div id="main-wrapper" style="width: 300px; text-align: center">
+			<div class="alert alert-info">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<center>
+					Good day, dear user! We suggest that you start encoding data from source documents or transaction files up to financial statements for referencing purposes.
+				</center>
+			</div>
+			<br>
 			<a href="#add-entries-modal" data-toggle="modal" class="btn btn-primary" style="margin-bottom: 10px"><i class="icon-plus"></i> Enter Accounting Data Entries</a>
 			<a href="#edit-entries-modal" data-toggle="modal" class="btn" style="margin-bottom: 10px"><i class="icon-pencil"></i> Edit Accounting Data Entries</a>
 			<a href="#export-file-modal" data-toggle="modal" class="btn" style="margin-bottom: 10px"><i class="icon-file"></i> Export to File</a>
@@ -259,6 +293,99 @@
 			add_file_type = $('#add-file-type').val();
 			edit_file_type = $('#edit-file-type').val();
 			exp_file_type = $('#export-file-type').val();
+			
+			function showStartupModal() {
+				$('#startup-modal').modal('show');
+			}
+			
+			function validateAdd() {
+				errors = 0;
+				month = $('#add_month').val();
+				year = $('#add_year').val();
+				if (add_file_type != 'Income Statement') {
+					if (month == '' || year == '') {
+						$('#notify-add').remove();
+						$('#add-date-field').append('<div id="notify-add" style="color: red; font-size: 9pt; font-style: italic; text-align: left">For non-income statement files, month and year must be specified!</div>');
+						errors++;
+					} else {
+						$('#notify-add').remove();
+						errors--;
+					}
+				} else {
+					if (year == '') {
+						$('#notify-add').remove();
+						$('#add-date-field').append('<div id="notify-add" style="color: red; font-size: 9pt; font-style: italic; text-align: left">For income statements, at least, the year must be specified!</div>');
+						errors++;
+					} else {
+						$('#notify-add').remove();
+						errors--;
+					}
+				}
+				console.log(errors);
+				if (errors <= 0) {
+					$('#add-entry-form').submit();
+				}
+			}
+			
+			function validateEdit() {
+				errors = 0;
+				month = $('#edit_month').val();
+				year = $('#edit_year').val();
+				if (exp_file_type != 'Income Statement') {
+					if (month == '' || year == '') {
+						$('#notify-edit').remove();
+						$('#edit-date-field').append('<div id="notify-edit" style="color: red; font-size: 9pt; font-style: italic; text-align: left">For non-income statement files, month and year must be specified!</div>');
+						errors++;
+					} else {
+						$('#notify-edit').remove();
+						errors--;
+					}
+				} else {
+					if (year == '') {
+						$('#notify-edit').remove();
+						$('#edit-date-field').append('<div id="notify-edit" style="color: red; font-size: 9pt; font-style: italic; text-align: left">For income statements, at least, the year must be specified!</div>');
+						errors++;
+					} else {
+						$('#notify-edit').remove();
+						errors--;
+					}
+				}
+				
+				console.log(errors);
+				if (errors <= 0) {
+					$('#edit-entry-form').submit();
+				}
+			}
+
+			function validateExp() {
+				errors = 0;
+				month = $('#ex_month').val();
+				year = $('#ex_year').val();
+				if (exp_file_type != 'Income Statement') {
+					if (month == '' || year == '') {
+						$('#notify-export').remove();
+						$('#export-date-field').append('<div id="notify-export" style="color: red; font-size: 9pt; font-style: italic; text-align: left">For non-income statement files, month and year must be specified!</div>');
+						errors++;
+					} else {
+						$('#notify-export').remove();
+						errors--;
+					}
+				} else {
+					if (year == '') {
+						$('#notify-export').remove();
+						$('#export-date-field').append('<div id="notify-export" style="color: red; font-size: 9pt; font-style: italic; text-align: left">For income statements, at least, the year must be specified!</div>');
+						errors++;
+					} else {
+						$('#notify-export').remove();
+						errors--;
+					}
+				}
+				
+				console.log(errors);
+				if (errors <= 0) {
+					exportIt();
+				}
+			}
 			
 			if (add_file_type != '') {
 				$('#proceed').removeAttr('disabled');
@@ -333,12 +460,19 @@
 					dataType: 'text',
 					success: function(data) {
 						console.log(data);
-						$('#export-file-modal').hide();
-						$('#content').remove();
-						$('#dload-modal-body').append('<p id="content">Your downloaded file has been saved to ' + data + '. Do you want to locate the file?</p>');
-						$('#dloadModal').removeClass('hide');
-						$('#dloadModal').addClass('in');
-						$('#locateFileButton').attr("href", "{url}export/open?path=" + data);
+						if (data != 'fail') {
+							$('#export-file-modal').hide();
+							$('#content').remove();
+							$('#dload-modal-body').append('<p id="content">Your downloaded file has been saved to ' + data + '. Do you want to locate the file?</p>');
+							$('#dloadModal').removeClass('hide');
+							$('#dloadModal').addClass('in');
+							$('#locateFileButton').attr("href", "{url}export/open?path=" + data);
+						} else {
+							$('#export-file-modal').modal('hide');
+							$('#content').remove();
+							$('#dload-fail-modal-body').append('<p id="content">Exporting failed. It might be that the query yields no results. Try again.</p>');
+							$('#dloadFailModal').modal('show');
+						}
 					}
 				});		
 			}

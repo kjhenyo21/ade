@@ -10,6 +10,10 @@
 	<body>
 		<!-- Main -->
 		<div id="main-wrapper-setup">
+			<div id="response" class="alert alert-success" style="margin: 0 auto; margin-bottom: 50px; text-align:center; width: 280px; display: none">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<i class="icon-thumbs-up"></i> Successfully saved the changes! Refresh the page to load the changes.
+			</div>
 			<div id="form-container">
 				<form id="add-trans" class="form-horizontal">
 					<center>
@@ -213,6 +217,8 @@
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
 							//location.replace("{url}");
+							$('#response').show();
+							$("html, body").animate({ scrollTop: 0 }, "slow");
 						}
 					});
 				} else {

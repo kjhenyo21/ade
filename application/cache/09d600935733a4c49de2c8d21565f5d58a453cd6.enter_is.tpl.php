@@ -5,22 +5,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '09d600935733a4c49de2c8d21565f5d58a453cd6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_is.tpl',
-      1 => 1365840992,
+      1 => 1365902496,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '76195166d292eee517-18400222',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_516914754ad59',
-  'variables' => 
-  array (
-    'month' => 0,
-    'year' => 0,
-  ),
+  'unifunc' => 'content_516a0536357a4',
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_516914754ad59')) {function content_516914754ad59($_smarty_tpl) {?><!--
+<?php if ($_valid && !is_callable('content_516a0536357a4')) {function content_516a0536357a4($_smarty_tpl) {?>  <!--
  * Trailblazer Digital Accounting Audit Trail Program
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created October 31, 2012
@@ -147,49 +142,77 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 			
 			function submitIt() {
 				error = 0;
-				/**$('input[name="path[]"]').each(function() {
-					id = $(this).attr('id');
-					if ($(this).hasClass('error'))
-						error++;
-					else {
-						if ($(this).val() == '') {
-							$('#notify-' + id).remove();
-							$(this).parent().parent().addClass("error");
-							$(this).parent().parent().append('<div id="notify-' + id + '" style="color: red; font-size: 9pt; font-style: italic; text-align: left; margin-left:15px">Must not be empty!</div>');
-							error++;
-						} else {
-							$(this).parent().parent().removeClass("error");
-							$('#notify-' + id).remove();
-						}
-					}
-					
-				});
-				$('input[name="ext[]"]').each(function() {
+				empty = true;
+				$('input[name="revAcct[]"]').each(function() {
 					id = $(this).attr('id');
 					if ($(this).val() == '') {
-						$('#notify-' + id).remove();
-						$(this).parent().parent().addClass("error");
-						$(this).parent().parent().append('<div id="notify-' + id + '" style="color: red; font-size: 9pt; font-style: italic; text-align: left; margin-left:15px">Must not be empty!</div>');
 						error++;
+						empty = true;
 					} else {
-						$(this).parent().parent().removeClass("error");
-						$('#notify-' + id).remove();
+						error--;
+						empty = false;
+					}					
+				});
+				
+				$('input[name="revAmt[]"]').each(function() {
+					id = $(this).attr('id');
+					if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
 					}
-				});*/
+				});
+				
+				$('input[name="total_rev"]').each(function() {
+					id = $(this).attr('id');
+						if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
+					}
+				});
+				
+				$('input[name="total_exp"]').each(function() {
+					id = $(this).attr('id');
+						if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
+					}
+				});
+				
+				$('input[name="net_income"]').each(function() {
+					id = $(this).attr('id');
+					if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
+					}
+				});
+				
 				console.log("ERRORS: " + error);
-				if (error == 0) {
+				if (!empty) {
+					$('#response').remove();
 					$.ajax({
 						type: "POST",
 						url: 'saveIncomeStatement',
 						data: $("#add-income-statement").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							location.replace("http://localhost/ade/");
+							//location.replace("http://localhost/ade/");
 						}
 					});
 				} else {
 					$('#response').remove();
-					$('#setup-pref').prepend('<div id="response" class="alert alert-error" style="margin: 0 auto; text-align:center; width: 280px"><button type="button" class="close" data-dismiss="alert">&times;</button><i class="icon-thumbs-down"></i> Cannot process while there are errors.</div>');
+					$('#form-container').prepend('<div id="response" class="alert alert-error" style="margin: 0 auto; text-align:center; width: 280px"><button type="button" class="close" data-dismiss="alert">&times;</button><i class="icon-thumbs-down"></i> Cannot process while there are errors. Check that all fields are not empty.</div>');
 					$("html, body").animate({ scrollTop: 0 }, "slow");
 				}
 			}

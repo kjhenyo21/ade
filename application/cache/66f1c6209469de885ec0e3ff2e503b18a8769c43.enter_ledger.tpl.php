@@ -11,11 +11,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'nocache_hash' => '1769516715027b5aa0-42430673',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_516947858a4c8',
+  'unifunc' => 'content_5169f9855a78b',
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_516947858a4c8')) {function content_516947858a4c8($_smarty_tpl) {?>  <!--
+<?php if ($_valid && !is_callable('content_5169f9855a78b')) {function content_5169f9855a78b($_smarty_tpl) {?>  <!--
  * Trailblazer Digital Accounting Audit Trail Program
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created October 31, 2012
@@ -82,7 +82,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<div class="control">
 							<input type="hidden" id="type" name="type" value="general" />
 							<input type="hidden" id="month" name="month" value="January" />
-							<input type="hidden" id="year" name="year" value="2010" />
+							<input type="hidden" id="year" name="year" value="" />
 							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="http://localhost/ade/" id="reset" class="btn">Back</a>
@@ -179,7 +179,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						data: $("#add-ledger").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							location.replace("http://localhost/ade/add/enter_ledger?type=general&month=January&year=2010");
+							location.replace("http://localhost/ade/add/enter_ledger?type=general&month=January&year=");
 						}
 					});
 				} else {

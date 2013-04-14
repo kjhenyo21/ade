@@ -68,6 +68,7 @@ class Add extends CI_Controller {
 		}
 		
 		if ($total_rev != '') {
+			echo $total_rev;
 			$info = array(
 				'month' => $month,
 				'year' => $year,
@@ -96,6 +97,7 @@ class Add extends CI_Controller {
 		}
 
 		if ($total_exp != '') {
+			echo $total_exp;
 			$info = array(
 				'month' => $month,
 				'year' => $year,
@@ -107,6 +109,7 @@ class Add extends CI_Controller {
 		}
 		
 		if ($net_income != '') {
+			echo $net_income;
 			$info = array(
 				'month' => $month,
 				'year' => $year,

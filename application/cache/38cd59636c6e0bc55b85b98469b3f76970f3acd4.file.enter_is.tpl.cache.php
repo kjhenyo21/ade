@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 10:11:24
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 19:29:32
          compiled from "C:\xampp\htdocs\ade\application/views\edit\enter_is.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3180051677cb662a549-10812269%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38cd59636c6e0bc55b85b98469b3f76970f3acd4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_is.tpl',
-      1 => 1365840672,
+      1 => 1365874169,
       2 => 'file',
     ),
   ),
@@ -40,6 +40,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<body>
 		<!-- Main -->
 		<div id="main-wrapper-setup">
+			<div id="response" class="alert alert-success" style="margin: 0 auto; margin-bottom: 50px; text-align:center; width: 280px; display: none">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<i class="icon-thumbs-up"></i> Successfully saved the changes! Refresh the page to load the changes.
+			</div>
 			<div id="form-container">
 				<form id="edit-income-statement" class="form-horizontal">
 					<center>
@@ -272,6 +276,8 @@ assets/scripts/jquery.validate.min.js" type="text/javascript"></script>
 							//alert('Setup successful! You will now be directed to the Login Page.');
 							//location.replace("<?php echo smarty_function_url(array(),$_smarty_tpl);?>
 ");
+							$('#response').show();
+							$("html, body").animate({ scrollTop: 0 }, "slow");
 						}
 					});
 				} else {

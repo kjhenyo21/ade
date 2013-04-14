@@ -125,37 +125,65 @@
 			
 			function submitIt() {
 				error = 0;
-				/**$('input[name="path[]"]').each(function() {
-					id = $(this).attr('id');
-					if ($(this).hasClass('error'))
-						error++;
-					else {
-						if ($(this).val() == '') {
-							$('#notify-' + id).remove();
-							$(this).parent().parent().addClass("error");
-							$(this).parent().parent().append('<div id="notify-' + id + '" style="color: red; font-size: 9pt; font-style: italic; text-align: left; margin-left:15px">Must not be empty!</div>');
-							error++;
-						} else {
-							$(this).parent().parent().removeClass("error");
-							$('#notify-' + id).remove();
-						}
-					}
-					
-				});
-				$('input[name="ext[]"]').each(function() {
+				empty = true;
+				$('input[name="revAcct[]"]').each(function() {
 					id = $(this).attr('id');
 					if ($(this).val() == '') {
-						$('#notify-' + id).remove();
-						$(this).parent().parent().addClass("error");
-						$(this).parent().parent().append('<div id="notify-' + id + '" style="color: red; font-size: 9pt; font-style: italic; text-align: left; margin-left:15px">Must not be empty!</div>');
 						error++;
+						empty = true;
 					} else {
-						$(this).parent().parent().removeClass("error");
-						$('#notify-' + id).remove();
+						error--;
+						empty = false;
+					}					
+				});
+				
+				$('input[name="revAmt[]"]').each(function() {
+					id = $(this).attr('id');
+					if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
 					}
-				});*/
+				});
+				
+				$('input[name="total_rev"]').each(function() {
+					id = $(this).attr('id');
+						if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
+					}
+				});
+				
+				$('input[name="total_exp"]').each(function() {
+					id = $(this).attr('id');
+						if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
+					}
+				});
+				
+				$('input[name="net_income"]').each(function() {
+					id = $(this).attr('id');
+					if ($(this).val() == '') {
+						error++;
+						empty = true;
+					} else {
+						error--;
+						empty = false;
+					}
+				});
+				
 				console.log("ERRORS: " + error);
-				if (error == 0) {
+				if (!empty) {
+					$('#response').remove();
 					$.ajax({
 						type: "POST",
 						url: 'saveIncomeStatement',
@@ -167,7 +195,7 @@
 					});
 				} else {
 					$('#response').remove();
-					$('#setup-pref').prepend('<div id="response" class="alert alert-error" style="margin: 0 auto; text-align:center; width: 280px"><button type="button" class="close" data-dismiss="alert">&times;</button><i class="icon-thumbs-down"></i> Cannot process while there are errors.</div>');
+					$('#form-container').prepend('<div id="response" class="alert alert-error" style="margin: 0 auto; text-align:center; width: 280px"><button type="button" class="close" data-dismiss="alert">&times;</button><i class="icon-thumbs-down"></i> Cannot process while there are errors. Check that all fields are not empty.</div>');
 					$("html, body").animate({ scrollTop: 0 }, "slow");
 				}
 			}

@@ -5,17 +5,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38cd59636c6e0bc55b85b98469b3f76970f3acd4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_is.tpl',
-      1 => 1365840672,
+      1 => 1365874169,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '3180051677cb662a549-10812269',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_516914e354950',
+  'unifunc' => 'content_516995fce6634',
+  'variables' => 
+  array (
+    'entries' => 0,
+    'e' => 0,
+    'rowNo' => 0,
+    'month' => 0,
+    'year' => 0,
+  ),
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_516914e354950')) {function content_516914e354950($_smarty_tpl) {?>  <!--
+<?php if ($_valid && !is_callable('content_516995fce6634')) {function content_516995fce6634($_smarty_tpl) {?><!--
  * Trailblazer Digital Accounting Audit Trail Program
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created October 31, 2012
@@ -27,6 +35,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<body>
 		<!-- Main -->
 		<div id="main-wrapper-setup">
+			<div id="response" class="alert alert-success" style="margin: 0 auto; margin-bottom: 50px; text-align:center; width: 280px; display: none">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<i class="icon-thumbs-up"></i> Successfully saved the changes! Refresh the page to load the changes.
+			</div>
 			<div id="form-container">
 				<form id="edit-income-statement" class="form-horizontal">
 					<center>
@@ -44,26 +56,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<strong>Revenues:</strong>
 						<table id="revenues" class="table table-hover">
 							<tbody>
-																																									<tr id="row0"><td><div class="table-column" id="group-acct0"><div id="control-acct0" class="control" style="text-align: center"><input type="text" class="span3" id="acct0" name="revAcct[]" value=Sales placeholder="e.g. Sales, Interest Income, Service Income, etc." onChange="revAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt0" name="revAmt[]" value=48659.27 placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove0" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																																																																																																																																																																																																																											</tbody>
+																																									<tr id="row0"><td><div class="table-column" id="group-acct0"><div id="control-acct0" class="control" style="text-align: center"><input type="text" class="span3" id="acct0" name="revAcct[]" value=Internet Services placeholder="e.g. Sales, Interest Income, Service Income, etc." onChange="revAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt0" name="revAmt[]" value=23862 placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove0" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																				<tr id="row0"><td><div class="table-column" id="group-acct0"><div id="control-acct0" class="control" style="text-align: center"><input type="text" class="span3" id="acct0" name="revAcct[]" value=Printing Services placeholder="e.g. Sales, Interest Income, Service Income, etc." onChange="revAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt0" name="revAmt[]" value=16981.50 placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove0" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																																																																																																																																																																								</tbody>
 						</table>
-																																													<strong>Total Revenues</strong><span style="margin-left:240px"><input type="text" class="span2" id="total_rev" name="total_rev" value="48659.27" placeholder="Php 0.00"/></span>
-																																																																																																																																																																																																<br><br><br><strong>Less: Expenses:</strong>
+																																																												<strong>Total Revenues</strong><span style="margin-left:240px"><input type="text" class="span2" id="total_rev" name="total_rev" value="40843.50" placeholder="Php 0.00"/></span>
+																																																																																																																																																			<br><br><br><strong>Less: Expenses:</strong>
 						<table id="expenses" class="table table-hover">
 							<tbody>
-																																																																																						<tr id="row2"><td><div class="table-column" id="group-acct2"><div id="control-acct2" class="control" style="text-align: center"><input type="text" class="span3" id="acct2" name="expAcct[]" value="Communications" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt2" name="expAmt[]" value="300" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove2" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row3"><td><div class="table-column" id="group-acct3"><div id="control-acct3" class="control" style="text-align: center"><input type="text" class="span3" id="acct3" name="expAcct[]" value="Purchases" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt3" name="expAmt[]" value="14869.18" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove3" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row4"><td><div class="table-column" id="group-acct4"><div id="control-acct4" class="control" style="text-align: center"><input type="text" class="span3" id="acct4" name="expAcct[]" value="Stall Rent" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt4" name="expAmt[]" value="11460" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove4" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row5"><td><div class="table-column" id="group-acct5"><div id="control-acct5" class="control" style="text-align: center"><input type="text" class="span3" id="acct5" name="expAcct[]" value="Other Taxes/Licenses" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt5" name="expAmt[]" value="3650.31" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove5" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row6"><td><div class="table-column" id="group-acct6"><div id="control-acct6" class="control" style="text-align: center"><input type="text" class="span3" id="acct6" name="expAcct[]" value="Registration" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt6" name="expAmt[]" value="1000" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove6" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row7"><td><div class="table-column" id="group-acct7"><div id="control-acct7" class="control" style="text-align: center"><input type="text" class="span3" id="acct7" name="expAcct[]" value="Salaries" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt7" name="expAmt[]" value="10800" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove7" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row8"><td><div class="table-column" id="group-acct8"><div id="control-acct8" class="control" style="text-align: center"><input type="text" class="span3" id="acct8" name="expAcct[]" value="Honorarium" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt8" name="expAmt[]" value="1600" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove8" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row9"><td><div class="table-column" id="group-acct9"><div id="control-acct9" class="control" style="text-align: center"><input type="text" class="span3" id="acct9" name="expAcct[]" value="Freight-In" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt9" name="expAmt[]" value="1600" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove9" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
-																																													<tr id="row10"><td><div class="table-column" id="group-acct10"><div id="control-acct10" class="control" style="text-align: center"><input type="text" class="span3" id="acct10" name="expAcct[]" value="Electricity" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt10" name="expAmt[]" value="1380" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove10" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																																																																																																<tr id="row3"><td><div class="table-column" id="group-acct3"><div id="control-acct3" class="control" style="text-align: center"><input type="text" class="span3" id="acct3" name="expAcct[]" value="Salaries and Wages" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt3" name="expAmt[]" value="12000" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove3" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																													<tr id="row4"><td><div class="table-column" id="group-acct4"><div id="control-acct4" class="control" style="text-align: center"><input type="text" class="span3" id="acct4" name="expAcct[]" value="Internet and Communication" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt4" name="expAmt[]" value="4450" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove4" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																													<tr id="row5"><td><div class="table-column" id="group-acct5"><div id="control-acct5" class="control" style="text-align: center"><input type="text" class="span3" id="acct5" name="expAcct[]" value="Water and Power" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt5" name="expAmt[]" value="2275" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove5" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																													<tr id="row6"><td><div class="table-column" id="group-acct6"><div id="control-acct6" class="control" style="text-align: center"><input type="text" class="span3" id="acct6" name="expAcct[]" value="Rental" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt6" name="expAmt[]" value="5000" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove6" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																													<tr id="row7"><td><div class="table-column" id="group-acct7"><div id="control-acct7" class="control" style="text-align: center"><input type="text" class="span3" id="acct7" name="expAcct[]" value="Office Supplies" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt7" name="expAmt[]" value="5820" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove7" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
+																																													<tr id="row8"><td><div class="table-column" id="group-acct8"><div id="control-acct8" class="control" style="text-align: center"><input type="text" class="span3" id="acct8" name="expAcct[]" value="Taxes and Licenses" placeholder="e.g. Purchases, Rent, Taxes, etc." onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><div class="control" style="text-align: center"><input type="text" class="span2" id="amt8" name="expAmt[]" value="2460" placeholder="Php 0.00" ></div></div></td><td><div class="table-column"></div></td><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove8" style="color: red;" onClick="removeRow(this.id)"></i></a></div></div></td></tr>
 																																																																																												</tbody>
 						</table>
-																																																																																																																																																																																																			<strong>Total Expenses</strong><span style="margin-left:240px"><input type="text" class="span2" id="total_exp" name="total_exp" value="45537.29" placeholder="Php 0.00"/></span>
-																																																																																																																																																																																																																																																						<br><br><br><strong>NET INCOME</strong><span style="margin-left:260px"><input type="text" class="span2" id="net_income" name="net_income" value="3121.98" placeholder="Php 0.00"/></span>
+																																																																																																																																																																					<strong>Total Expenses</strong><span style="margin-left:240px"><input type="text" class="span2" id="total_exp" name="total_exp" value="32005" placeholder="Php 0.00"/></span>
+																																																																																																																																																																																																																								<br><br><br><strong>NET INCOME</strong><span style="margin-left:260px"><input type="text" class="span2" id="net_income" name="net_income" value="8838.50" placeholder="Php 0.00"/></span>
 																										</div>
 					<hr style="margin-bottom: 5px">
 					<div style="font-style: italic; font-size: 8pt; color: red; margin-bottom: 20px">
@@ -73,8 +83,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 					<div class="field-group" style="margin-bottom: 0px; text-align: center">
 						<div class="control">
-							<input type="hidden" id="month" name="month" value=""/>
-							<input type="hidden" id="year" name="year" value="2010"/>
+							<input type="hidden" id="month" name="month" value="March"/>
+							<input type="hidden" id="year" name="year" value="2012"/>
 							<!---->
 								
 							<!---->
@@ -133,7 +143,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				rows--;
 				$.ajax({
 					type: "GET",
-					url: 'deleteISEntry?month=&year=2010&acct=' + acct + '&amt=' + amt,
+					url: 'deleteISEntry?month=March&year=2012&acct=' + acct + '&amt=' + amt,
 				});	
 			}
 			
@@ -177,6 +187,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
 							//location.replace("http://localhost/ade/");
+							$('#response').show();
+							$("html, body").animate({ scrollTop: 0 }, "slow");
 						}
 					});
 				} else {
