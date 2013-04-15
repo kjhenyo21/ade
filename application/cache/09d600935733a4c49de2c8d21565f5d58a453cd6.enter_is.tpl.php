@@ -5,17 +5,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '09d600935733a4c49de2c8d21565f5d58a453cd6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_is.tpl',
-      1 => 1365902496,
+      1 => 1365902847,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '76195166d292eee517-18400222',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_516a0536357a4',
+  'unifunc' => 'content_516b6e895dca5',
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_516a0536357a4')) {function content_516a0536357a4($_smarty_tpl) {?>  <!--
+<?php if ($_valid && !is_callable('content_516b6e895dca5')) {function content_516b6e895dca5($_smarty_tpl) {?>  <!--
  * Trailblazer Digital Accounting Audit Trail Program
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created October 31, 2012
@@ -65,7 +65,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					</div>
 					<div class="field-group" style="margin-bottom: 0px; text-align: center">
 						<div class="control">
-							<input type="hidden" id="month" name="month" value=""/>
+							<input type="hidden" id="month" name="month" value="January"/>
 							<input type="hidden" id="year" name="year" value="2010"/>
 							<a id="submit" class="btn" disabled="disabled" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
@@ -207,7 +207,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						data: $("#add-income-statement").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							//location.replace("http://localhost/ade/");
+							location.replace("http://localhost/ade/");
 						}
 					});
 				} else {

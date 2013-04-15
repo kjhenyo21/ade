@@ -5,20 +5,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb1930e0df1e40ffb8de3557516f6a7c5da8090a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_cdj.tpl',
-      1 => 1365831814,
+      1 => 1366036265,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '1698851676534ba04d8-28583322',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_516951bfbb19c',
+  'unifunc' => 'content_516c0f37b8933',
+  'variables' => 
+  array (
+    'month' => 0,
+    'year' => 0,
+  ),
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_516951bfbb19c')) {function content_516951bfbb19c($_smarty_tpl) {?>  <!--
- * Trailblazer Digital Accounting Audit Trail Program
+<?php if ($_valid && !is_callable('content_516c0f37b8933')) {function content_516c0f37b8933($_smarty_tpl) {?><!--
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Cash Disbursements Journal</title>
@@ -32,7 +37,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<center>
 						<h4>Cash Disbursements Journal</h4>
 					</center>
-					
+					<br>
+					<br>
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>
@@ -40,7 +46,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<th style="text-align: center; width: 180px">Account<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 140px">Source Document Reference #<span class="asterisk">*</span></th>
 								<th style="text-align: center">Reference File<span class="asterisk">*</span></th>
-								<th style="text-align: center">Purchases (Db)<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 80px">Purchases (Db)<span class="asterisk">*</span></th>
 								<th style="text-align: center">Other (Db)<span class="asterisk">*</span></th>
 								<th style="text-align: center">Cash (Cr)<span class="asterisk">*</span></th>
 								<th></th>

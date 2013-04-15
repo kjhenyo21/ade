@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 09:35:56
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-15 16:38:18
          compiled from "C:\xampp\htdocs\ade\application/views\add\enter_ledger.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1769516715027b5aa0-42430673%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '66f1c6209469de885ec0e3ff2e503b18a8769c43' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_ledger.tpl',
-      1 => 1365838285,
+      1 => 1366036697,
       2 => 'file',
     ),
   ),
@@ -19,17 +19,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_51671502a55af',
   'variables' => 
   array (
-    'type' => 0,
     'month' => 0,
     'year' => 0,
+    'type' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51671502a55af')) {function content_51671502a55af($_smarty_tpl) {?><?php if (!is_callable('smarty_function_url')) include 'C:\\xampp\\htdocs\\ade\\application\\libraries\\smarty\\plugins\\function.url.php';
 ?><!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>General Ledger</title>
@@ -42,14 +42,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<form id="add-ledger" class="form-horizontal">
 					<center>
 						<h4>General Ledger</h4>
-						<div style="margin-top: 30px; margin-bottom: 60px">
-							<span>Acct. Name</span>
+						<em><?php echo $_smarty_tpl->tpl_vars['month']->value;?>
+ <?php echo $_smarty_tpl->tpl_vars['year']->value;?>
+</em>
+					</center>
+					<div style="margin-top: 60px; margin-bottom: 20px">
+						<div style="margin: 10px 0">
+							<span>Acct. Name</span><span class="asterisk">*</span>
 							<span><input type="text" class="span2" id="acct_name" name="acct_name"/></span>
-							<span>Acct. No.</span>
+						</div>
+						<div "margin: 10px 0">
+							<span>Acct. No.</span><span class="asterisk">*</span>
 							<span><input type="text" class="span1" id="acct_no" name="acct_no"/></span>
 						</div>
-					</center>
-					
+					</div>		
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 07:46:31
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-15 16:31:19
          compiled from "C:\xampp\htdocs\ade\application/views\add\enter_cdj.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1698851676534ba04d8-28583322%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb1930e0df1e40ffb8de3557516f6a7c5da8090a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_cdj.tpl',
-      1 => 1365831814,
+      1 => 1366036265,
       2 => 'file',
     ),
   ),
@@ -26,9 +26,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51676534da691')) {function content_51676534da691($_smarty_tpl) {?><?php if (!is_callable('smarty_function_url')) include 'C:\\xampp\\htdocs\\ade\\application\\libraries\\smarty\\plugins\\function.url.php';
 ?><!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Cash Disbursements Journal</title>
@@ -42,7 +42,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<center>
 						<h4>Cash Disbursements Journal</h4>
 					</center>
-					
+					<br>
+					<br>
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>
@@ -50,7 +51,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<th style="text-align: center; width: 180px">Account<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 140px">Source Document Reference #<span class="asterisk">*</span></th>
 								<th style="text-align: center">Reference File<span class="asterisk">*</span></th>
-								<th style="text-align: center">Purchases (Db)<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 80px">Purchases (Db)<span class="asterisk">*</span></th>
 								<th style="text-align: center">Other (Db)<span class="asterisk">*</span></th>
 								<th style="text-align: center">Cash (Cr)<span class="asterisk">*</span></th>
 								<th></th>

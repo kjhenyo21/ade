@@ -5,20 +5,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '61af1fe01252fe42ddd11506e6406d90d2975092' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_trans.tpl',
-      1 => 1365835137,
+      1 => 1366037241,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '1074051672d13d7ae52-78119827',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_51695b6678744',
+  'unifunc' => 'content_516c12fcf1031',
+  'variables' => 
+  array (
+    'month' => 0,
+    'year' => 0,
+    'type' => 0,
+  ),
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_51695b6678744')) {function content_51695b6678744($_smarty_tpl) {?>  <!--
- * Trailblazer Digital Accounting Audit Trail Program
+<?php if ($_valid && !is_callable('content_516c12fcf1031')) {function content_516c12fcf1031($_smarty_tpl) {?><!--
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Transaction File</title>
@@ -31,16 +37,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<form id="add-trans" class="form-horizontal">
 					<center>
 						<h4>Transaction File</h4>
+						<em>January 2001</em>
 					</center>
-					
+					<br>
+					<br>				
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>
 								<th style="text-align: center; width: 80px">Date<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 180px">OR No<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 30px">Amount<span class="asterisk">*</span></th>
-								<th style="text-align: center">Name<span class="asterisk">*</span></th>
-								<th style="text-align: center">Address<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 250px">Name<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 200px">Address<span class="asterisk">*</span></th>
 								<th style="text-align: center">Contact<span class="asterisk">*</span></th>
 								<th></th>
 							</thead>
@@ -96,8 +104,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<table id="sub-heading" class="table table-hover">
 							<thead>
 								<th style="text-align: center;" class="span5">Item<span class="asterisk">*</span></th>
-								<th style="text-align: center">Quantity<span class="asterisk">*</span></th>
-								<th style="text-align: center">Unit Price<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 170px">Quantity<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 170px">Unit Price<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 120px">Amount<span class="asterisk">*</span></th>
 								<th></th>
 							</thead>
@@ -112,8 +120,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div style="font-style: italic; font-size: 8pt; color: red; margin-bottom: 20px">* - required fields</div>
 					<div class="field-group" style="margin-bottom: 0px; text-align: center">
 						<div class="control">
-							<input type="hidden" id="type" name="type" value="expenses" />
-							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
+							<input type="hidden" id="type" name="type" value="sales" />
+							<a id="submit" class="btn btn-primary" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="http://localhost/ade/" id="reset" class="btn">Back</a>
 						</div>
@@ -209,7 +217,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						data: $("#add-trans").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							location.replace("http://localhost/ade/add/enter_trans?type=expenses&month=January&year=2010");
+							location.replace("http://localhost/ade/add/enter_trans?type=sales&month=January&year=2001");
 						}
 					});
 				} else {

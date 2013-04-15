@@ -5,20 +5,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02b66a5367660e7747b1751f1e236ce35c560716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_trans.tpl',
-      1 => 1365837721,
+      1 => 1366037306,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '246051678a7a5a0025-63309860',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_516907aeb45c4',
+  'unifunc' => 'content_516c133d15115',
+  'variables' => 
+  array (
+    'month' => 0,
+    'year' => 0,
+    'entries' => 0,
+    'e' => 0,
+    'entries_det' => 0,
+    'ed' => 0,
+    'rowNo' => 0,
+    'type' => 0,
+  ),
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_516907aeb45c4')) {function content_516907aeb45c4($_smarty_tpl) {?>  <!--
- * Trailblazer Digital Accounting Audit Trail Program
+<?php if ($_valid && !is_callable('content_516c133d15115')) {function content_516c133d15115($_smarty_tpl) {?><!--
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Transaction File</title>
@@ -27,20 +38,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<body>
 		<!-- Main -->
 		<div id="main-wrapper-setup">
+			<div id="response" class="alert alert-success" style="margin: 0 auto; margin-bottom: 50px; text-align:center; width: 280px; display: none">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<i class="icon-thumbs-up"></i> Successfully saved the changes! Refresh the page to load the changes.
+			</div>
 			<div id="form-container">
 				<form id="add-trans" class="form-horizontal">
 					<center>
 						<h4>Transaction File</h4>
+						<em>January 2010</em>
 					</center>
-					
+					<br>
+					<br>
 																		<div id="tables" style="margin: 0 auto; width: 100%">
 								<table id="heading" class="table table-hover">
 									<thead>
 										<th style="text-align: center; width: 80px">Date<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 180px">OR No<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 30px">Amount<span class="asterisk">*</span></th>
-										<th style="text-align: center">Name<span class="asterisk">*</span></th>
-										<th style="text-align: center">Address<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 250px">Name<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 200px">Address<span class="asterisk">*</span></th>
 										<th style="text-align: center">Contact<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
@@ -72,7 +89,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 											<td>
 												<div class="table-column">
 													<div id="control-name" class="control" style="text-align: center">
-														<input type="text" style="width: 180px" id="name" name="name[]" value="Mary Ann Polinars"  onChange="expAcctOnChange(this.id); return false;">
+														<input type="text" style="width: 180px" id="name" name="name[]" value="Mary Ann Polinar"  onChange="expAcctOnChange(this.id); return false;">
 													</div>
 												</div>
 											</td>
@@ -96,16 +113,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<table id="sub-heading" class="table table-hover">
 									<thead>
 										<th style="text-align: center;" class="span5">Item<span class="asterisk">*</span></th>
-										<th style="text-align: center">Quantity<span class="asterisk">*</span></th>
-										<th style="text-align: center">Unit Price<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Quantity<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Unit Price<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 120px">Amount<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
 									<table id="trans-details-entries" class="table table-hover">
 										<tbody>
-																																																													<tr id="row0"><td><div class="table-column" id="group-item0"><div id="control-item0" class="control" style="text-align: center"><input type="text" class="span3" id="item0" name="item[]" value="DISCRT-MATH-ROSEN-4TH-ED" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty0"><div id="control-qty0" class="control" style="text-align: center"><input type="text" class="span2" id="qty0" name="qty[]" value="21" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice0"><div id="control-uprice0" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice0" name="uprice[]" value="480" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt0"><div id="control-amt0" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt0" name="amt[]" value="960" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove0" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
+																																																													<tr id="row0"><td><div class="table-column" id="group-item0"><div id="control-item0" class="control" style="text-align: center"><input type="text" class="span3" id="item0" name="item[]" value="DISCRT-MATH-ROSEN-4TH-ED" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty0"><div id="control-qty0" class="control" style="text-align: center"><input type="text" class="span2" id="qty0" name="qty[]" value="2" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice0"><div id="control-uprice0" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice0" name="uprice[]" value="480" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt0"><div id="control-amt0" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt0" name="amt[]" value="960" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove0" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
 														<input type="hidden" id="date_det0" name="date_det[]" value="2010-01-02" />
 														<input type="hidden" id="or_no_det0" name="or_no_det[]" value="6253" /></tr>
+																																																																	<tr id="row1"><td><div class="table-column" id="group-item1"><div id="control-item1" class="control" style="text-align: center"><input type="text" class="span3" id="item1" name="item[]" value="BEST-BUY-SCISSORS" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty1"><div id="control-qty1" class="control" style="text-align: center"><input type="text" class="span2" id="qty1" name="qty[]" value="1" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice1"><div id="control-uprice1" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice1" name="uprice[]" value="37.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt1"><div id="control-amt1" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt1" name="amt[]" value="37.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove1" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
+														<input type="hidden" id="date_det1" name="date_det[]" value="2010-01-02" />
+														<input type="hidden" id="or_no_det1" name="or_no_det[]" value="6253" /></tr>
 																																																																																																																																																																																																																																																									</tbody>
 									</table>
 								</table>
@@ -117,8 +137,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 										<th style="text-align: center; width: 80px">Date<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 180px">OR No<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 30px">Amount<span class="asterisk">*</span></th>
-										<th style="text-align: center">Name<span class="asterisk">*</span></th>
-										<th style="text-align: center">Address<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 250px">Name<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 200px">Address<span class="asterisk">*</span></th>
 										<th style="text-align: center">Contact<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
@@ -150,7 +170,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 											<td>
 												<div class="table-column">
 													<div id="control-name" class="control" style="text-align: center">
-														<input type="text" style="width: 180px" id="name" name="name[]" value="Yvette Doyongang"  onChange="expAcctOnChange(this.id); return false;">
+														<input type="text" style="width: 180px" id="name" name="name[]" value="Yvette Doyongan"  onChange="expAcctOnChange(this.id); return false;">
 													</div>
 												</div>
 											</td>
@@ -174,16 +194,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<table id="sub-heading" class="table table-hover">
 									<thead>
 										<th style="text-align: center;" class="span5">Item<span class="asterisk">*</span></th>
-										<th style="text-align: center">Quantity<span class="asterisk">*</span></th>
-										<th style="text-align: center">Unit Price<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Quantity<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Unit Price<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 120px">Amount<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
 									<table id="trans-details-entries" class="table table-hover">
 										<tbody>
-																																																																																																			<tr id="row1"><td><div class="table-column" id="group-item1"><div id="control-item1" class="control" style="text-align: center"><input type="text" class="span3" id="item1" name="item[]" value="SUPERB-GP-318" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty1"><div id="control-qty1" class="control" style="text-align: center"><input type="text" class="span2" id="qty1" name="qty[]" value="4" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice1"><div id="control-uprice1" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice1" name="uprice[]" value="94" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt1"><div id="control-amt1" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt1" name="amt[]" value="36" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove1" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
-														<input type="hidden" id="date_det1" name="date_det[]" value="2010-01-02" />
-														<input type="hidden" id="or_no_det1" name="or_no_det[]" value="6254" /></tr>
+																																																																																																																																									<tr id="row2"><td><div class="table-column" id="group-item2"><div id="control-item2" class="control" style="text-align: center"><input type="text" class="span3" id="item2" name="item[]" value="SUPERB-GP-318" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty2"><div id="control-qty2" class="control" style="text-align: center"><input type="text" class="span2" id="qty2" name="qty[]" value="4" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice2"><div id="control-uprice2" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice2" name="uprice[]" value="9" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt2"><div id="control-amt2" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt2" name="amt[]" value="36" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove2" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
+														<input type="hidden" id="date_det2" name="date_det[]" value="2010-01-02" />
+														<input type="hidden" id="or_no_det2" name="or_no_det[]" value="6254" /></tr>
 																																																																																																																																																																																																																			</tbody>
 									</table>
 								</table>
@@ -195,8 +215,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 										<th style="text-align: center; width: 80px">Date<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 180px">OR No<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 30px">Amount<span class="asterisk">*</span></th>
-										<th style="text-align: center">Name<span class="asterisk">*</span></th>
-										<th style="text-align: center">Address<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 250px">Name<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 200px">Address<span class="asterisk">*</span></th>
 										<th style="text-align: center">Contact<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
@@ -221,7 +241,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 											<td>
 												<div class="table-column">
 													<div id="control-amt" class="control" style="text-align: center">
-														<input type="text" style="width: 80px" id="amt_due" name="amt_due[]" value="314.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;">
+														<input type="text" style="width: 80px" id="amt_due" name="amt_due[]" value="304.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;">
 													</div>
 												</div>
 											</td>
@@ -252,19 +272,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<table id="sub-heading" class="table table-hover">
 									<thead>
 										<th style="text-align: center;" class="span5">Item<span class="asterisk">*</span></th>
-										<th style="text-align: center">Quantity<span class="asterisk">*</span></th>
-										<th style="text-align: center">Unit Price<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Quantity<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Unit Price<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 120px">Amount<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
 									<table id="trans-details-entries" class="table table-hover">
 										<tbody>
-																																																																																																																																									<tr id="row2"><td><div class="table-column" id="group-item2"><div id="control-item2" class="control" style="text-align: center"><input type="text" class="span3" id="item2" name="item[]" value="GUIDE-LEADRSHP-LEE" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty2"><div id="control-qty2" class="control" style="text-align: center"><input type="text" class="span2" id="qty2" name="qty[]" value="1" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice2"><div id="control-uprice2" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice2" name="uprice[]" value="124.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt2"><div id="control-amt2" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt2" name="amt[]" value="124.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove2" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
-														<input type="hidden" id="date_det2" name="date_det[]" value="2010-01-02" />
-														<input type="hidden" id="or_no_det2" name="or_no_det[]" value="6255" /></tr>
-																																																																	<tr id="row3"><td><div class="table-column" id="group-item3"><div id="control-item3" class="control" style="text-align: center"><input type="text" class="span3" id="item3" name="item[]" value="OPTCL-MOUSE-ORANGE" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty3"><div id="control-qty3" class="control" style="text-align: center"><input type="text" class="span2" id="qty3" name="qty[]" value="1" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice3"><div id="control-uprice3" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice3" name="uprice[]" value="180" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt3"><div id="control-amt3" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt3" name="amt[]" value="180" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove3" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
+																																																																																																																																																																															<tr id="row3"><td><div class="table-column" id="group-item3"><div id="control-item3" class="control" style="text-align: center"><input type="text" class="span3" id="item3" name="item[]" value="GUIDE-LEADRSHP-LEE" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty3"><div id="control-qty3" class="control" style="text-align: center"><input type="text" class="span2" id="qty3" name="qty[]" value="1" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice3"><div id="control-uprice3" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice3" name="uprice[]" value="124.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt3"><div id="control-amt3" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt3" name="amt[]" value="124.50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove3" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
 														<input type="hidden" id="date_det3" name="date_det[]" value="2010-01-02" />
 														<input type="hidden" id="or_no_det3" name="or_no_det[]" value="6255" /></tr>
+																																																																	<tr id="row4"><td><div class="table-column" id="group-item4"><div id="control-item4" class="control" style="text-align: center"><input type="text" class="span3" id="item4" name="item[]" value="OPTCL-MOUSE-ORANGE" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty4"><div id="control-qty4" class="control" style="text-align: center"><input type="text" class="span2" id="qty4" name="qty[]" value="1" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice4"><div id="control-uprice4" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice4" name="uprice[]" value="180" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt4"><div id="control-amt4" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt4" name="amt[]" value="180" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove4" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
+														<input type="hidden" id="date_det4" name="date_det[]" value="2010-01-02" />
+														<input type="hidden" id="or_no_det4" name="or_no_det[]" value="6255" /></tr>
 																																																																																																																																							</tbody>
 									</table>
 								</table>
@@ -276,8 +296,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 										<th style="text-align: center; width: 80px">Date<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 180px">OR No<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 30px">Amount<span class="asterisk">*</span></th>
-										<th style="text-align: center">Name<span class="asterisk">*</span></th>
-										<th style="text-align: center">Address<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 250px">Name<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 200px">Address<span class="asterisk">*</span></th>
 										<th style="text-align: center">Contact<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
@@ -333,19 +353,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<table id="sub-heading" class="table table-hover">
 									<thead>
 										<th style="text-align: center;" class="span5">Item<span class="asterisk">*</span></th>
-										<th style="text-align: center">Quantity<span class="asterisk">*</span></th>
-										<th style="text-align: center">Unit Price<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Quantity<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Unit Price<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 120px">Amount<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
 									<table id="trans-details-entries" class="table table-hover">
 										<tbody>
-																																																																																																																																																																																																																					<tr id="row4"><td><div class="table-column" id="group-item4"><div id="control-item4" class="control" style="text-align: center"><input type="text" class="span3" id="item4" name="item[]" value="BOND-PAPR-METRO" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty4"><div id="control-qty4" class="control" style="text-align: center"><input type="text" class="span2" id="qty4" name="qty[]" value="1" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice4"><div id="control-uprice4" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice4" name="uprice[]" value="160" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt4"><div id="control-amt4" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt4" name="amt[]" value="160" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove4" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
-														<input type="hidden" id="date_det4" name="date_det[]" value="2010-01-04" />
-														<input type="hidden" id="or_no_det4" name="or_no_det[]" value="6256" /></tr>
-																																																																	<tr id="row5"><td><div class="table-column" id="group-item5"><div id="control-item5" class="control" style="text-align: center"><input type="text" class="span3" id="item5" name="item[]" value="HBW-BALLPEN" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty5"><div id="control-qty5" class="control" style="text-align: center"><input type="text" class="span2" id="qty5" name="qty[]" value="5" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice5"><div id="control-uprice5" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice5" name="uprice[]" value="10" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt5"><div id="control-amt5" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt5" name="amt[]" value="50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove5" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
+																																																																																																																																																																																																																																																											<tr id="row5"><td><div class="table-column" id="group-item5"><div id="control-item5" class="control" style="text-align: center"><input type="text" class="span3" id="item5" name="item[]" value="BOND-PAPR-METRO" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty5"><div id="control-qty5" class="control" style="text-align: center"><input type="text" class="span2" id="qty5" name="qty[]" value="1" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice5"><div id="control-uprice5" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice5" name="uprice[]" value="160" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt5"><div id="control-amt5" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt5" name="amt[]" value="160" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove5" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
 														<input type="hidden" id="date_det5" name="date_det[]" value="2010-01-04" />
 														<input type="hidden" id="or_no_det5" name="or_no_det[]" value="6256" /></tr>
+																																																																	<tr id="row6"><td><div class="table-column" id="group-item6"><div id="control-item6" class="control" style="text-align: center"><input type="text" class="span3" id="item6" name="item[]" value="HBW-BALLPEN" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-qty6"><div id="control-qty6" class="control" style="text-align: center"><input type="text" class="span2" id="qty6" name="qty[]" value="5" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-uprice6"><div id="control-uprice6" class="control" style="text-align: center"><input type="text" style="width: 80px" id="uprice6" name="uprice[]" value="10" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column" id="group-amt6"><div id="control-amt6" class="control" style="text-align: center"><input type="text" style="width: 80px" id="amt6" name="amt[]" value="50" placeholder="Php 0.00" onChange="expAcctOnChange(this.id); return false;"></div></div></div></td><td><div class="table-column"><td><div class="table-column"><div class="control"><a href="#" data-toggle="modal"><i class="icon-remove" id="remove6" style="color: red;" onClick="removeDetRow(this.id)"></i></a></div></div></td>
+														<input type="hidden" id="date_det6" name="date_det[]" value="2010-01-04" />
+														<input type="hidden" id="or_no_det6" name="or_no_det[]" value="6256" /></tr>
 																																																											</tbody>
 									</table>
 								</table>
@@ -355,7 +375,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<div class="field-group" style="margin-bottom: 0px; text-align: center">
 						<div class="control">
 							<input type="hidden" id="type" name="type" value="sales" />
-							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
+							<a id="submit" class="btn btn-primary" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="http://localhost/ade/" id="reset" class="btn">Back</a>
 						</div>
@@ -458,6 +478,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
 							//location.replace("http://localhost/ade/");
+							$('#response').show();
+							$("html, body").animate({ scrollTop: 0 }, "slow");
 						}
 					});
 				} else {

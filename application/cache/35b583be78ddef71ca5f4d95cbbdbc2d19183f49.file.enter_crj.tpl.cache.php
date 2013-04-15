@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 14:24:13
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-15 16:42:47
          compiled from "C:\xampp\htdocs\ade\application/views\edit\enter_crj.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1649951678701207021-22027054%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '35b583be78ddef71ca5f4d95cbbdbc2d19183f49' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_crj.tpl',
-      1 => 1365832384,
+      1 => 1366036965,
       2 => 'file',
     ),
   ),
@@ -19,19 +19,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5167870156720',
   'variables' => 
   array (
+    'month' => 0,
+    'year' => 0,
     'entries' => 0,
     'e' => 0,
     'rowNo' => 0,
-    'month' => 0,
-    'year' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5167870156720')) {function content_5167870156720($_smarty_tpl) {?><?php if (!is_callable('smarty_function_url')) include 'C:\\xampp\\htdocs\\ade\\application\\libraries\\smarty\\plugins\\function.url.php';
 ?><!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Cash Receipts Journal</title>
@@ -41,11 +41,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 		<!-- Main -->
 		<div id="main-wrapper-setup">
 			<div id="form-container">
+				<div id="response" class="alert alert-success" style="margin: 0 auto; margin-bottom: 50px; text-align:center; width: 280px; display: none">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<i class="icon-thumbs-up"></i> Successfully saved the changes! Refresh the page to load the changes.
+				</div>
 				<form id="add-journal" class="form-horizontal">
 					<center>
 						<h4>Cash Receipts Journal</h4>
+						<em><?php echo $_smarty_tpl->tpl_vars['month']->value;?>
+ <?php echo $_smarty_tpl->tpl_vars['year']->value;?>
+</em>
 					</center>
-					
+					<br>
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>
@@ -54,7 +61,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 								<th style="text-align: center; width: 140px">Source Document Reference #<span class="asterisk">*</span></th>
 								<th style="text-align: center">Reference File<span class="asterisk">*</span></th>
 								<th style="text-align: center">Cash (Db)<span class="asterisk">*</span></th>
-								<th style="text-align: center">Other (Db)<span class="asterisk">*</span></th>
+								<th style="text-align: center">Other (Cr)<span class="asterisk">*</span></th>
 								<th style="text-align: center">Sales (Cr)<span class="asterisk">*</span></th>
 								<th></th>
 							</thead>
@@ -155,7 +162,7 @@ $_smarty_tpl->tpl_vars['e']->_loop = true;
 "/>
 							<input type="hidden" id="year" name="year" value="<?php echo $_smarty_tpl->tpl_vars['year']->value;?>
 "/>
-							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
+							<a id="submit" class="btn btn-primary" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="<?php echo smarty_function_url(array(),$_smarty_tpl);?>
 " id="reset" class="btn">Back</a>
@@ -270,6 +277,8 @@ assets/scripts/jquery.validate.min.js" type="text/javascript"></script>
 							//alert('Setup successful! You will now be directed to the Login Page.');
 							//location.replace("<?php echo smarty_function_url(array(),$_smarty_tpl);?>
 ");
+							$('#response').show();
+							$("html, body").animate({ scrollTop: 0 }, "slow");
 						}
 					});
 				} else {

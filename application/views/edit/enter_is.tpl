@@ -1,7 +1,7 @@
 <!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Income Statement</title>
@@ -18,8 +18,10 @@
 				<form id="edit-income-statement" class="form-horizontal">
 					<center>
 						<h4>Income Statement</h4>
+						<em>{$month} {$year}</em>
 					</center>
-					
+					<br>
+					<br>
 					<div id="tables" style="margin: 0 auto; width: 60%">
 						<table id="heading" class="table table-hover">
 							<thead>

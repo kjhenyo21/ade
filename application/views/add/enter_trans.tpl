@@ -1,7 +1,7 @@
 <!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Transaction File</title>
@@ -14,16 +14,18 @@
 				<form id="add-trans" class="form-horizontal">
 					<center>
 						<h4>Transaction File</h4>
+						<em>{$month} {$year}</em>
 					</center>
-					
+					<br>
+					<br>				
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>
 								<th style="text-align: center; width: 80px">Date<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 180px">OR No<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 30px">Amount<span class="asterisk">*</span></th>
-								<th style="text-align: center">Name<span class="asterisk">*</span></th>
-								<th style="text-align: center">Address<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 250px">Name<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 200px">Address<span class="asterisk">*</span></th>
 								<th style="text-align: center">Contact<span class="asterisk">*</span></th>
 								<th></th>
 							</thead>
@@ -79,8 +81,8 @@
 						<table id="sub-heading" class="table table-hover">
 							<thead>
 								<th style="text-align: center;" class="span5">Item<span class="asterisk">*</span></th>
-								<th style="text-align: center">Quantity<span class="asterisk">*</span></th>
-								<th style="text-align: center">Unit Price<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 170px">Quantity<span class="asterisk">*</span></th>
+								<th style="text-align: center; width: 170px">Unit Price<span class="asterisk">*</span></th>
 								<th style="text-align: center; width: 120px">Amount<span class="asterisk">*</span></th>
 								<th></th>
 							</thead>
@@ -96,7 +98,7 @@
 					<div class="field-group" style="margin-bottom: 0px; text-align: center">
 						<div class="control">
 							<input type="hidden" id="type" name="type" value="{$type}" />
-							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
+							<a id="submit" class="btn btn-primary" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="{url}" id="reset" class="btn">Back</a>
 						</div>

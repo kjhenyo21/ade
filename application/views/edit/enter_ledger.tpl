@@ -1,7 +1,7 @@
 <!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>General Ledger</title>
@@ -18,6 +18,7 @@
 				<form id="add-ledger" class="form-horizontal">
 					<center>
 						<h4>General Ledger</h4>
+						<em>{$month} {$year}</em>
 					</center>
 					{$curr_acct = ""}
 					{if ($entries)}
@@ -100,7 +101,7 @@
 							<input type="hidden" id="type" name="type" value="{$type}" />
 							<input type="hidden" id="month" name="month" value="{$month}" />
 							<input type="hidden" id="year" name="year" value="{$year}" />
-							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
+							<a id="submit" class="btn btn-primary" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="{url}" id="reset" class="btn">Back</a>
 						</div>

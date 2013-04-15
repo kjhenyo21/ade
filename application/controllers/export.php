@@ -150,48 +150,56 @@ class Export extends CI_Controller {
 		$data = "";
 		$monthnames = array('none','January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 		$num_month = array_search($month,$monthnames);
+		$status = "";
 		
 		if ($month != '') {
 			$entries = $database->getLedger($type, $month, $year);
 			
-			foreach ($entries as $e) {
-				//if not current account, it must be the heading
-				if ($curr_acct != $e['acct_name']) {
-					//if entries contain comma, enclose them in quotation marks
-					if (strstr($e['acct_name'], ','))
-						$e['acct_name'] = '"'.$e['acct_name'].'"';
-					if (strstr($e['ref'], ','))
-						$e['ref'] = '"'.$e['ref'].'"';
-					$data .= "a,".$e['acct_name'].",".$e['acct_no'].",,".PHP_EOL;
-					$data .= $e['date'].",".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
-					$curr_acct = $e['acct_name'];
-				} else if($e['ref'] == 'Total') {
-					$data .= "t,".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
-				} else $data .= $e['date'].",".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
+			if($entries) {
+				foreach ($entries as $e) {
+					//if not current account, it must be the heading
+					if ($curr_acct != $e['acct_name']) {
+						//if entries contain comma, enclose them in quotation marks
+						if (strstr($e['acct_name'], ','))
+							$e['acct_name'] = '"'.$e['acct_name'].'"';
+						if (strstr($e['ref'], ','))
+							$e['ref'] = '"'.$e['ref'].'"';
+						$data .= "a,".$e['acct_name'].",".$e['acct_no'].",,".PHP_EOL;
+						$data .= $e['date'].",".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
+						$curr_acct = $e['acct_name'];
+					} else if($e['ref'] == 'Total') {
+						$data .= "t,".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
+					} else $data .= $e['date'].",".$e['sdRef'].",".$e['ref'].",".$e['debit'].",".$e['credit'].PHP_EOL;
+				}
+			} else {
+				$status = 'fail';
+				echo $status;
 			}
 			if ($filename == '')
 				$filename = "gl-".$num_month."-".$year.".lg";
 		} 		
 		//echo $filename;
 		//echo $data;
-		$folder = 'temp';
-		if (!is_dir($folder)) {
-			mkdir($folder);
-		}
-		
-		$new_file = $folder."/".$filename;
-		$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
-		fwrite($handle, $data);
+		if ($status != 'fail') {
+			$folder = 'temp';
+			if (!is_dir($folder)) {
+				mkdir($folder);
+			}
+			
+			$new_file = $folder."/".$filename;
+			$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
+			fwrite($handle, $data);
 
-		$local_ade_path = "C:\\ADE";
-		if (!is_dir($local_ade_path)) {
-			mkdir($local_ade_path);
-		}
+			$local_ade_path = "C:\\ADE";
+			if (!is_dir($local_ade_path)) {
+				mkdir($local_ade_path);
+			}
 
-		$downloadFile = 'C:/ADE/'.$filename;
-		$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
-		fwrite($handle, $data);
-		echo $local_ade_path;
+			$downloadFile = 'C:/ADE/'.$filename;
+			$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
+			fwrite($handle, $data);
+			echo $local_ade_path;
+		}
 	}
 	
 	public function export_journal() {
@@ -203,7 +211,7 @@ class Export extends CI_Controller {
 		$data = "";
 		$monthnames = array('none','January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 		$num_month = array_search($month,$monthnames);
-		
+		$status = "fail";
 		if ($month != '') {
 			$entries = $database->getJournal($type, $month, $year);
 			if ($entries) {
@@ -244,6 +252,9 @@ class Export extends CI_Controller {
 				$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
 				fwrite($handle, $data);
 				echo $local_ade_path;
+			} else {
+				$status = 'fail';
+				echo $status;
 			}
 		} 		
 		
@@ -259,73 +270,86 @@ class Export extends CI_Controller {
 		$data_trans_det = "h,Date,OR No,Item,Quantity,Unit Price,Amount".PHP_EOL;
 		$monthnames = array('none','January','February','March','April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
 		$num_month = array_search($month,$monthnames);
+		$status = "";
 		
 		if ($month != '') {
 			$entries = $database->getTrans($type, $month, $year);
 			$det_entries = $database->getTransDetails($type, $month, $year);
-
-			foreach ($entries as $e) {
-				if (strstr($e['name'], ','))
-					$e['name'] = '"'.$e['name'].'"';
-				if (strstr($e['address'], ','))
-					$e['address'] = '"'.$e['address'].'"';
-				$data_trans .= ",".$e['date'].",".$e['or_no'].",".$e['amt_due'].",".$e['name'].",".$e['address'].",".$e['contact'].PHP_EOL;
+			
+			if ($entries) {
+				foreach ($entries as $e) {
+					if (strstr($e['name'], ','))
+						$e['name'] = '"'.$e['name'].'"';
+					if (strstr($e['address'], ','))
+						$e['address'] = '"'.$e['address'].'"';
+					$data_trans .= ",".$e['date'].",".$e['or_no'].",".$e['amt_due'].",".$e['name'].",".$e['address'].",".$e['contact'].PHP_EOL;
+				}
+			} else {
+				$status = 'fail';
 			}
 			
-			foreach ($det_entries as $e) {
-				if (strstr($e['item'], ','))
-					$e['item'] = '"'.$e['item'].'"';
-				$data_trans_det .= ",".$e['date'].",".$e['or_no'].",".$e['item'].",".$e['qty'].",".$e['uprice'].",".$e['amt'].PHP_EOL;
+			if ($det_entries) {
+				foreach ($det_entries as $e) {
+					if (strstr($e['item'], ','))
+						$e['item'] = '"'.$e['item'].'"';
+					$data_trans_det .= ",".$e['date'].",".$e['or_no'].",".$e['item'].",".$e['qty'].",".$e['uprice'].",".$e['amt'].PHP_EOL;
+				}
+			} else {
+				$status = 'fail';
 			}
 		} 
 		
-		if ($filename == '') {
-			if ($type == 'sales')
-				$filename = "st-".$num_month."-".$year.".tf";
-			else if ($type == 'purchases')
-				$filename = "pt-".$num_month."-".$year.".tf";
-			else if ($type == 'expenses')
-				$filename = "et-".$num_month."-".$year.".tf";
-		}
+		echo $status;
 				
 		//echo $filename;
 		//echo $data;
-		$folder = 'temp';
-		if (!is_dir($folder)) {
-			mkdir($folder);
+		if ($status != 'fail') {
+			$folder = 'temp';
+			if (!is_dir($folder)) {
+				mkdir($folder);
+			}
+			
+			if ($filename == '') {
+				if ($type == 'sales')
+					$filename = "st-".$num_month."-".$year.".tf";
+				else if ($type == 'purchases')
+					$filename = "pt-".$num_month."-".$year.".tf";
+				else if ($type == 'expenses')
+					$filename = "et-".$num_month."-".$year.".jl";
+			}
+			
+			$new_file = $folder."/".$filename;
+			$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
+			fwrite($handle, $data_trans);
+
+			$local_ade_path = "C:\\ADE";
+			if (!is_dir($local_ade_path)) {
+				mkdir($local_ade_path);
+			}
+
+			$downloadFile = 'C:/ADE/'.$filename;
+			$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
+			fwrite($handle, $data_trans);
+			
+			//trans det
+			$temp = explode("-", $filename);
+			$det_filename = $temp[0]."d-".$temp[1]."-".$temp[2];
+			
+			$new_file = $folder."/".$det_filename;
+			$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
+			fwrite($handle, $data_trans_det);
+
+			$local_ade_path = "C:\\ADE";
+			if (!is_dir($local_ade_path)) {
+				mkdir($local_ade_path);
+			}
+
+			$downloadFile = 'C:/ADE/'.$det_filename;
+			$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
+			fwrite($handle, $data_trans_det);
+			
+			echo $local_ade_path;
 		}
-		
-		$new_file = $folder."/".$filename;
-		$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
-		fwrite($handle, $data_trans);
-
-		$local_ade_path = "C:\\ADE";
-		if (!is_dir($local_ade_path)) {
-			mkdir($local_ade_path);
-		}
-
-		$downloadFile = 'C:/ADE/'.$filename;
-		$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
-		fwrite($handle, $data_trans);
-		
-		//trans det
-		$temp = explode("-", $filename);
-		$det_filename = $temp[0]."d-".$temp[1]."-".$temp[2];
-		
-		$new_file = $folder."/".$det_filename;
-		$handle = fopen($new_file, 'w') or die('Cannot open file:  '.$new_file);
-		fwrite($handle, $data_trans_det);
-
-		$local_ade_path = "C:\\ADE";
-		if (!is_dir($local_ade_path)) {
-			mkdir($local_ade_path);
-		}
-
-		$downloadFile = 'C:/ADE/'.$det_filename;
-		$handle = fopen($downloadFile, 'w') or die('Cannot open file:  '.$downloadFile);
-		fwrite($handle, $data_trans_det);
-		
-		echo $local_ade_path;
 	}
 	
 	public function open() {

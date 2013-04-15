@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-14 03:21:51
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-14 05:02:03
          compiled from "C:\xampp\htdocs\ade\application/views\add\enter_is.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:76195166d292eee517-18400222%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '09d600935733a4c49de2c8d21565f5d58a453cd6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_is.tpl',
-      1 => 1365902496,
+      1 => 1365902847,
       2 => 'file',
     ),
   ),
@@ -231,7 +231,7 @@ assets/scripts/jquery.validate.min.js" type="text/javascript"></script>
 						data: $("#add-income-statement").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							//location.replace("<?php echo smarty_function_url(array(),$_smarty_tpl);?>
+							location.replace("<?php echo smarty_function_url(array(),$_smarty_tpl);?>
 ");
 						}
 					});

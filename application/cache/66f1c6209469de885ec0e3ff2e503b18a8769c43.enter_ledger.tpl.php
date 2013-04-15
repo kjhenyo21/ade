@@ -5,20 +5,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '66f1c6209469de885ec0e3ff2e503b18a8769c43' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\add\\enter_ledger.tpl',
-      1 => 1365838285,
+      1 => 1366036697,
       2 => 'file',
     ),
   ),
   'nocache_hash' => '1769516715027b5aa0-42430673',
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5169f9855a78b',
+  'unifunc' => 'content_516c10db3edf2',
+  'variables' => 
+  array (
+    'month' => 0,
+    'year' => 0,
+    'type' => 0,
+  ),
   'has_nocache_code' => false,
   'cache_lifetime' => 1,
 ),true); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5169f9855a78b')) {function content_5169f9855a78b($_smarty_tpl) {?>  <!--
- * Trailblazer Digital Accounting Audit Trail Program
+<?php if ($_valid && !is_callable('content_516c10db3edf2')) {function content_516c10db3edf2($_smarty_tpl) {?><!--
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>General Ledger</title>
@@ -31,14 +37,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<form id="add-ledger" class="form-horizontal">
 					<center>
 						<h4>General Ledger</h4>
-						<div style="margin-top: 30px; margin-bottom: 60px">
-							<span>Acct. Name</span>
+						<em>January 2001</em>
+					</center>
+					<div style="margin-top: 60px; margin-bottom: 20px">
+						<div style="margin: 10px 0">
+							<span>Acct. Name</span><span class="asterisk">*</span>
 							<span><input type="text" class="span2" id="acct_name" name="acct_name"/></span>
-							<span>Acct. No.</span>
+						</div>
+						<div "margin: 10px 0">
+							<span>Acct. No.</span><span class="asterisk">*</span>
 							<span><input type="text" class="span1" id="acct_no" name="acct_no"/></span>
 						</div>
-					</center>
-					
+					</div>		
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>
@@ -82,7 +92,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						<div class="control">
 							<input type="hidden" id="type" name="type" value="general" />
 							<input type="hidden" id="month" name="month" value="January" />
-							<input type="hidden" id="year" name="year" value="" />
+							<input type="hidden" id="year" name="year" value="2001" />
 							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="http://localhost/ade/" id="reset" class="btn">Back</a>
@@ -179,7 +189,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 						data: $("#add-ledger").serialize(),				
 						success: function(data){
 							//alert('Setup successful! You will now be directed to the Login Page.');
-							location.replace("http://localhost/ade/add/enter_ledger?type=general&month=January&year=");
+							location.replace("http://localhost/ade/add/enter_ledger?type=general&month=January&year=2001");
 						}
 					});
 				} else {

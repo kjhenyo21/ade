@@ -1,5 +1,5 @@
 <!--
- * Accounting Data Encoder
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
  * @date-created April 11, 2013
 -->
@@ -19,6 +19,20 @@
 			</div>
 			<div class="modal-footer">
 				<a type="button" class="btn btm-primary" data-dismiss="modal" aria-hidden="true">OK</a>
+			</div>
+		</div>
+		<!-- About Modal -->
+		<div id="about-modal" class="modal hide fade" style="margin-top: -150px; margin-left: -240px; width: 450px">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>What is ADE?</h3>
+			</div>
+			<div id="about-modal-body" class="modal-body">
+				<p><strong><em>Accounting Data Encoder (ADE)</em></strong> is an add-on to the <strong>Trailblazer Digital Transaction Audit Trail System</strong>. It is an application that allows Trailblazer users to enter accounting data of various accounting files (financial statements, ledgers, journals, transaction files, etc.) that are necessary for the audit trail and have the application process them into becoming output files in CSV (comma-separated values) form and in formats required by Trailblazer. These files, then, become the input files of the Trailblazer Digital Transaction Audit Trail System.</p>
+				<p>For more info, click the Help button. May this application be of great service to you!</p>
+			</div>
+			<div class="modal-footer">
+				<a type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</a>
 			</div>
 		</div>
 		<!-- Modal for Add Entries -->
@@ -58,7 +72,7 @@
 										<select class="span2 small" id="add_month" name="add_month" onChange="monitor(); return false;">
 											<option></option>
 											<option>January</option>
-											<option>Febuary</option>
+											<option>February</option>
 											<option>March</option>
 											<option>April</option>
 											<option>May</option>
@@ -124,7 +138,7 @@
 										<select class="span2 small" id="edit_month" name="edit_month" onChange="monitor(); return false;">
 											<option></option>
 											<option>January</option>
-											<option>Febuary</option>
+											<option>February</option>
 											<option>March</option>
 											<option>April</option>
 											<option>May</option>
@@ -190,7 +204,7 @@
 										<select class="span2 small" id="ex_month" name="ex_month" onChange="monitor(); return false;">
 											<option></option>
 											<option>January</option>
-											<option>Febuary</option>
+											<option>February</option>
 											<option>March</option>
 											<option>April</option>
 											<option>May</option>
@@ -281,8 +295,10 @@
 			<br>
 			<a href="#add-entries-modal" data-toggle="modal" class="btn btn-primary" style="margin-bottom: 10px"><i class="icon-plus"></i> Enter Accounting Data Entries</a>
 			<a href="#edit-entries-modal" data-toggle="modal" class="btn" style="margin-bottom: 10px"><i class="icon-pencil"></i> Edit Accounting Data Entries</a>
-			<a href="#export-file-modal" data-toggle="modal" class="btn" style="margin-bottom: 10px"><i class="icon-file"></i> Export to File</a>
+			<a href="#export-file-modal" data-toggle="modal" class="btn" style="margin-bottom: 10px"><i class="icon-download"></i> Export to File</a>
 			<br><a href="#clear-archive-modal" data-toggle="modal" class="btn" style="margin-bottom: 10px"><i class="icon-trash"></i> Clear Archive</a>
+			<br><a href="help" class="btn" style="margin-bottom: 10px"><i class="icon-question-sign"></i> Help</a>
+			<a href="#about-modal" data-toggle="modal" class="btn" style="margin-bottom: 10px"><i class="icon-info-sign"></i> About ADE</a>
 		</div>
 		<link href="{url}assets/stylesheets/bootstrap.css" rel="stylesheet"></link>
 		<link href="{url}assets/stylesheets/bootstrap-responsive.css" rel="stylesheet"></link>
@@ -331,7 +347,7 @@
 				errors = 0;
 				month = $('#edit_month').val();
 				year = $('#edit_year').val();
-				if (exp_file_type != 'Income Statement') {
+				if (edit_file_type != 'Income Statement') {
 					if (month == '' || year == '') {
 						$('#notify-edit').remove();
 						$('#edit-date-field').append('<div id="notify-edit" style="color: red; font-size: 9pt; font-style: italic; text-align: left">For non-income statement files, month and year must be specified!</div>');

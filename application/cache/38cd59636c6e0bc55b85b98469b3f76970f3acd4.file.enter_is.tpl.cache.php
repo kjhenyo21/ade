@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 19:29:32
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-15 16:40:05
          compiled from "C:\xampp\htdocs\ade\application/views\edit\enter_is.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3180051677cb662a549-10812269%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '38cd59636c6e0bc55b85b98469b3f76970f3acd4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_is.tpl',
-      1 => 1365874169,
+      1 => 1366036802,
       2 => 'file',
     ),
   ),
@@ -19,19 +19,19 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_51677cb6b8f3d',
   'variables' => 
   array (
+    'month' => 0,
+    'year' => 0,
     'entries' => 0,
     'e' => 0,
     'rowNo' => 0,
-    'month' => 0,
-    'year' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51677cb6b8f3d')) {function content_51677cb6b8f3d($_smarty_tpl) {?><?php if (!is_callable('smarty_function_url')) include 'C:\\xampp\\htdocs\\ade\\application\\libraries\\smarty\\plugins\\function.url.php';
 ?><!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Income Statement</title>
@@ -48,8 +48,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 				<form id="edit-income-statement" class="form-horizontal">
 					<center>
 						<h4>Income Statement</h4>
+						<em><?php echo $_smarty_tpl->tpl_vars['month']->value;?>
+ <?php echo $_smarty_tpl->tpl_vars['year']->value;?>
+</em>
 					</center>
-					
+					<br>
+					<br>
 					<div id="tables" style="margin: 0 auto; width: 60%">
 						<table id="heading" class="table table-hover">
 							<thead>

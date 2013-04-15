@@ -202,7 +202,7 @@ class Edit extends CI_Controller {
 		for ($i = 0; $i < $sizeTotal; $i++) {
 			if ($total[$i] != '') {
 				//to determine if odd or even, i borrowed a code from here: http://bavotasan.com/2009/check-if-a-number-is-even-or-odd-with-php/
-				if ($num_month > 2) {
+				if ($num_month == 2) {
 					$end_date = $year."-".$num_month."-28";
 					$info = array(
 						'date' => $end_date,
@@ -348,7 +348,7 @@ class Edit extends CI_Controller {
 			}
 			if ($total != '') {
 				//to determine if odd or even, i borrowed a code from here: http://bavotasan.com/2009/check-if-a-number-is-even-or-odd-with-php/
-				if ($num_month > 2) {
+				if ($num_month == 2) {
 					$end_date = $year."-".$num_month."-28";
 					$info = array(
 						'date' => $end_date,
@@ -445,7 +445,7 @@ class Edit extends CI_Controller {
 			}
 			if ($total != '') {
 				//to determine if odd or even, i borrowed a code from here: http://bavotasan.com/2009/check-if-a-number-is-even-or-odd-with-php/
-				if ($num_month > 2) {
+				if ($num_month == 2) {
 					$end_date = $year."-".$num_month."-28";
 					$info = array(
 						'date' => $end_date,

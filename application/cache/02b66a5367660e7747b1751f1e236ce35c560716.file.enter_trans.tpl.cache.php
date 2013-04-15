@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2013-04-13 09:22:05
+<?php /* Smarty version Smarty-3.1.7, created on 2013-04-15 16:48:28
          compiled from "C:\xampp\htdocs\ade\application/views\edit\enter_trans.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:246051678a7a5a0025-63309860%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '02b66a5367660e7747b1751f1e236ce35c560716' => 
     array (
       0 => 'C:\\xampp\\htdocs\\ade\\application/views\\edit\\enter_trans.tpl',
-      1 => 1365837721,
+      1 => 1366037306,
       2 => 'file',
     ),
   ),
@@ -19,6 +19,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_51678a7a9c8c4',
   'variables' => 
   array (
+    'month' => 0,
+    'year' => 0,
     'entries' => 0,
     'e' => 0,
     'entries_det' => 0,
@@ -30,9 +32,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_51678a7a9c8c4')) {function content_51678a7a9c8c4($_smarty_tpl) {?><?php if (!is_callable('smarty_function_url')) include 'C:\\xampp\\htdocs\\ade\\application\\libraries\\smarty\\plugins\\function.url.php';
 ?><!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Transaction File</title>
@@ -41,12 +43,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<body>
 		<!-- Main -->
 		<div id="main-wrapper-setup">
+			<div id="response" class="alert alert-success" style="margin: 0 auto; margin-bottom: 50px; text-align:center; width: 280px; display: none">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<i class="icon-thumbs-up"></i> Successfully saved the changes! Refresh the page to load the changes.
+			</div>
 			<div id="form-container">
 				<form id="add-trans" class="form-horizontal">
 					<center>
 						<h4>Transaction File</h4>
+						<em><?php echo $_smarty_tpl->tpl_vars['month']->value;?>
+ <?php echo $_smarty_tpl->tpl_vars['year']->value;?>
+</em>
 					</center>
-					
+					<br>
+					<br>
 					<?php if (($_smarty_tpl->tpl_vars['entries']->value)){?>
 						<?php  $_smarty_tpl->tpl_vars['e'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['e']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['entries']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
@@ -59,8 +69,8 @@ $_smarty_tpl->tpl_vars['e']->_loop = true;
 										<th style="text-align: center; width: 80px">Date<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 180px">OR No<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 30px">Amount<span class="asterisk">*</span></th>
-										<th style="text-align: center">Name<span class="asterisk">*</span></th>
-										<th style="text-align: center">Address<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 250px">Name<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 200px">Address<span class="asterisk">*</span></th>
 										<th style="text-align: center">Contact<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
@@ -122,8 +132,8 @@ $_smarty_tpl->tpl_vars['e']->_loop = true;
 								<table id="sub-heading" class="table table-hover">
 									<thead>
 										<th style="text-align: center;" class="span5">Item<span class="asterisk">*</span></th>
-										<th style="text-align: center">Quantity<span class="asterisk">*</span></th>
-										<th style="text-align: center">Unit Price<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Quantity<span class="asterisk">*</span></th>
+										<th style="text-align: center; width: 170px">Unit Price<span class="asterisk">*</span></th>
 										<th style="text-align: center; width: 120px">Amount<span class="asterisk">*</span></th>
 										<th></th>
 									</thead>
@@ -178,7 +188,7 @@ $_smarty_tpl->tpl_vars['ed']->_loop = true;
 						<div class="control">
 							<input type="hidden" id="type" name="type" value="<?php echo $_smarty_tpl->tpl_vars['type']->value;?>
 " />
-							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
+							<a id="submit" class="btn btn-primary" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="<?php echo smarty_function_url(array(),$_smarty_tpl);?>
 " id="reset" class="btn">Back</a>
@@ -294,6 +304,8 @@ assets/scripts/jquery.validate.min.js" type="text/javascript"></script>
 							//alert('Setup successful! You will now be directed to the Login Page.');
 							//location.replace("<?php echo smarty_function_url(array(),$_smarty_tpl);?>
 ");
+							$('#response').show();
+							$("html, body").animate({ scrollTop: 0 }, "slow");
 						}
 					});
 				} else {

@@ -1,7 +1,7 @@
 <!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>Income Statement</title>
@@ -14,8 +14,10 @@
 				<form id="add-income-statement" class="form-horizontal">
 					<center>
 						<h4>Income Statement</h4>
+						<em>{$month} {$year}</em>
 					</center>
-					
+					<br>
+					<br>
 					<div id="tables" style="margin: 0 auto; width: 60%">
 						<table id="heading" class="table table-hover">
 							<thead>
@@ -50,7 +52,7 @@
 						<div class="control">
 							<input type="hidden" id="month" name="month" value="{$month}"/>
 							<input type="hidden" id="year" name="year" value="{$year}"/>
-							<a id="submit" class="btn" disabled="disabled" onClick="submitIt(); return false">Save</a>
+							<a id="submit" class="btn btn-primary" disabled="disabled" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="{url}" id="reset" class="btn">Back</a>
 						</div>

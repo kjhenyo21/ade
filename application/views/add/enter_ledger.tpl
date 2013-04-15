@@ -1,7 +1,7 @@
 <!--
- * Trailblazer Digital Accounting Audit Trail Program
+ * Accounting Data Encoder (ADE) for Trailblazer Digital Transaction Audit Trail System
  * @author Kristian Jacob Abad Lora <kjalora92@yahoo.com>
- * @date-created October 31, 2012
+ * @date-created April 11, 2013
 -->
 	<head>
 		<title>General Ledger</title>
@@ -14,14 +14,18 @@
 				<form id="add-ledger" class="form-horizontal">
 					<center>
 						<h4>General Ledger</h4>
-						<div style="margin-top: 30px; margin-bottom: 60px">
-							<span>Acct. Name</span>
+						<em>{$month} {$year}</em>
+					</center>
+					<div style="margin-top: 60px; margin-bottom: 20px">
+						<div style="margin: 10px 0">
+							<span>Acct. Name</span><span class="asterisk">*</span>
 							<span><input type="text" class="span2" id="acct_name" name="acct_name"/></span>
-							<span>Acct. No.</span>
+						</div>
+						<div "margin: 10px 0">
+							<span>Acct. No.</span><span class="asterisk">*</span>
 							<span><input type="text" class="span1" id="acct_no" name="acct_no"/></span>
 						</div>
-					</center>
-					
+					</div>		
 					<div id="tables" style="margin: 0 auto; width: 100%">
 						<table id="heading" class="table table-hover">
 							<thead>
@@ -66,7 +70,7 @@
 							<input type="hidden" id="type" name="type" value="{$type}" />
 							<input type="hidden" id="month" name="month" value="{$month}" />
 							<input type="hidden" id="year" name="year" value="{$year}" />
-							<a id="submit" class="btn" onClick="submitIt(); return false">Save</a>
+							<a id="submit" class="btn btn-primary" onClick="submitIt(); return false">Save</a>
 							<button type="reset" id="reset" class="btn" onClick="resetIt();">Reset</button>
 							<a href="{url}" id="reset" class="btn">Back</a>
 						</div>
